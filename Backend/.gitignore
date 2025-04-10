@@ -1,0 +1,27 @@
+# ====================
+# PHP Environment Files
+# ====================
+.env
+
+# ====================
+# Composer
+# ====================
+/vendor/
+/composer.lock
+
+# ====================
+# OS / System Files
+# ====================
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+
+# ====================
+# IDE / Editor Files
+# ====================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
