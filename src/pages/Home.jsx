@@ -1,11 +1,16 @@
-import Header from "../components/landing/Header";
+import React from "react";
+
+import Contact from "../components/landing/Contact"; // This is your React component
+import INOPoints from "../components/landing/INOPoints"; // This is your React component
+
 
 function Home() {
   return (
     <>
-      <Header />
-      <p>Welcome to /pages</p>
-    </>
+      <INOPoints/>
+      <Contact />
+        </>
   );
 }
+
 export default Home;

@@ -1,1 +1,2 @@
-/* add tailwind here */
+@import "tailwindcss";
+@tailwind utilities;
