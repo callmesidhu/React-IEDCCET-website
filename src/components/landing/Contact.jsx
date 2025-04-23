@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { db } from "../../services/api"; // Adjust path as per your project structure
-import { collection, addDoc } from "firebase/firestore";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { db, collection, addDoc } from "../../services/configs"; // Import Firebase functions
 
 const Contact = () => {
   const defaultFormData = {
@@ -42,8 +41,11 @@ const Contact = () => {
 
     try {
       console.log("Submitting form data:", formData);
+
+      // Add the form data to Firestore
       const docRef = await addDoc(collection(db, "contactMessages"), formData);
       console.log("Document written with ID:", docRef.id);
+
       alert("Message sent successfully!");
       setFormData(defaultFormData);
     } catch (err) {
@@ -116,24 +118,22 @@ const Contact = () => {
         </div>
       </div>
 
-     
-    {/* Vertical Divider */}
-<div className="hidden md:block w-[1px] bg-white  h-96 self-center -translate-x-10 " aria-hidden="true" />
+      {/* Vertical Divider */}
+      <div className="hidden md:block w-[1px] bg-white h-96 self-center -translate-x-10" aria-hidden="true" />
 
-{/* Right Side: Contact Info */}
-<div className="flex flex-col justify-center translate-y-17 -translate-x-20 pl-4 space-y-6 min-w-[200px]">
-
-        <div className="flex  ">
+      {/* Right Side: Contact Info */}
+      <div className="flex flex-col justify-center translate-y-17 -translate-x-20 pl-4 space-y-6 min-w-[200px]">
+        <div className="flex">
           <FiPhone size={20} />
           <span className="font-bold ml-2">+91 8570950954</span>
         </div>
-        <div className="flex  gap-3">
+        <div className="flex gap-3">
           <FiMail size={20} />
           <a href="mailto:sample@gmail.com" className="underline font-bold">
             sample@gmail.com
           </a>
         </div>
-        <div className="flex  gap-3">
+        <div className="flex gap-3">
           <FiMapPin size={20} />
           <span className="font-bold ml-2">College of Engineering, Trivandrum</span>
         </div>

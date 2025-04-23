@@ -7,10 +7,8 @@ import INOPoints from "../components/landing/INOPoints"; // This is your React c
 function Home() {
   return (
     <>
-    
       <INOPoints/>
       <Contact />
-      <p>Welcome to /pages</p> 
         </>
   );
 }
