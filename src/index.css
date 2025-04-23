@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
+=======
+@import "tailwindcss";
+>>>>>>> main
 @tailwind utilities;
