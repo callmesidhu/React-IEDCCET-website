@@ -1,16 +1,14 @@
 import React from "react";
 
 import Contact from "../components/landing/Contact"; // This is your React component
-
-import Header from "../components/landing/Header";
-
+import INOPoints from "../components/landing/INOPoints"; // This is your React component
 
 
 function Home() {
   return (
     <>
     
-      <Header />
+      <INOPoints/>
       <Contact />
       <p>Welcome to /pages</p> 
         </>

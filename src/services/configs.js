@@ -1,8 +1,5 @@
-// api.js
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 
-// Firebase configuration (ensure sensitive data is stored in .env)
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -13,11 +10,5 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase App
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firestore
-const db = getFirestore(app);
-
-// Export Firestore database object
-export { db };
