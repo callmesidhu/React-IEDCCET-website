@@ -48,7 +48,7 @@ function FacultyCards() {
 
   // Calculating responsive dimensions
   const gap = windowWidth < 640 ? 10 : 20;
-  const containerPadding = windowWidth < 640 ? 20 : 60;
+  const containerPadding = windowWidth < 640 ? 16 : 120;
   const maxContainerWidth =
     IMAGE_WIDTH * cardsToShow + gap * (cardsToShow - 1) + containerPadding;
 
