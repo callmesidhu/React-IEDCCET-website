@@ -78,7 +78,7 @@ function FacultyCards() {
   const arrowPosition = windowWidth < 640 ? "4" : "10";
 
   return (
-    <section className="w-full font-grotesk bg-custom-blue py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative">
+    <section className="w-full font-grotesk bg-[#0732EF] py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative">
       {/* left arrow */}
       <button
         onClick={prevSlide}

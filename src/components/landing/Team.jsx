@@ -80,7 +80,7 @@ function TeamCards() {
       {/* left arrow */}
       <button
         onClick={prevSlide}
-        className="absolute z-10 text-custom-blue rounded-full p-2 sm:p-3 hover:bg-white/10 transition-colors"
+        className="absolute z-10 text-[#0732EF] rounded-full p-2 sm:p-3 hover:bg-white/10 transition-colors"
         aria-label="Previous slide"
         style={{
           left: `${arrowPosition}px`,
@@ -92,7 +92,7 @@ function TeamCards() {
       </button>
 
       <div className="mx-auto" style={{ maxWidth: `${maxContainerWidth}px` }}>
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-custom-blue text-center mb-4 sm:mb-6 md:mb-8 lg:mb-12">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0732EF] text-center mb-4 sm:mb-6 md:mb-8 lg:mb-12">
           Team
         </h2>
 
@@ -172,7 +172,7 @@ function TeamCards() {
       {/* right arrow*/}
       <button
         onClick={nextSlide}
-        className="absolute z-10 text-custom-blue rounded-full p-2 sm:p-3 hover:bg-white/10 transition-colors"
+        className="absolute z-10 text-[#0732EF] rounded-full p-2 sm:p-3 hover:bg-white/10 transition-colors"
         aria-label="Next slide"
         style={{
           right: `${arrowPosition}px`,
@@ -183,7 +183,7 @@ function TeamCards() {
         <FaChevronRight className="text-lg sm:text-xl md:text-2xl" />
       </button>
 
-      <div className="w-full h-0.5 bg-custom-blue mt-6 sm:mt-8 md:mt-12 lg:mt-16"></div>
+      <div className="w-full h-0.5 bg-[#0732EF] mt-6 sm:mt-8 md:mt-12 lg:mt-16"></div>
     </section>
   );
 }
