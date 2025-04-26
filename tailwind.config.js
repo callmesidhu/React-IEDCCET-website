@@ -19,8 +19,17 @@ export default {
         'custom-0': '0%',
       },
       colors: {
-        'custom-blue': '#0732EF',
+        // Add your custom colors here
+        'brand-blue': '#1947E5', // Example blue color
+        'secondary': {
+          100: '#E2E2D5',
+          200: '#888883',
+          // Add different shades if needed
+        },
+        // You can reference specific hex codes
+        'custom-red': '#FF5A5F',
       },
+
       fontWeight: {
         'custom-bold': '700',
       },

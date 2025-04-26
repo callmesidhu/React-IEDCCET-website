@@ -47,7 +47,7 @@ function TeamCards() {
 
   // Calculating responsive dimensions
   const gap = windowWidth < 640 ? 10 : 20;
-  const containerPadding = windowWidth < 640 ? 20 : 60;
+  const containerPadding = windowWidth < 640 ? 16 : 120;
   const maxContainerWidth =
     IMAGE_WIDTH * cardsToShow + gap * (cardsToShow - 1) + containerPadding;
 
@@ -71,7 +71,7 @@ function TeamCards() {
   };
 
   //mid point of image for arrows
-  const imageMiddlePoint = `calc(75% - ${cardHeight / 2}px)`;
+  const imageMiddlePoint = `calc(70% - ${cardHeight / 2}px)`;
 
   const arrowPosition = windowWidth < 640 ? "4" : "10";
 
