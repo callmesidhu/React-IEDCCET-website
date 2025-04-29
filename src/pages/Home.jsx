@@ -35,6 +35,10 @@ function Home() {
       <Element name="section6">
         <Section6 />
       </Element>
+      
+      <Element name="inopoints">
+        <INOPoints />
+      </Element>
 
       <Element name="gallery">
         <Gallery />
@@ -52,9 +56,6 @@ function Home() {
         <Feedback />
       </Element>
 
-      <Element name="inopoints">
-        <INOPoints />
-      </Element>
 
       <Element name="contact">
         <Contact />
