@@ -2,7 +2,7 @@
 
 
 import image from "../assets/startup.png";
-import Footer from "../components/Startups/Footer";
+import Footer from "../components/landing/Footer";
 import Navbar from "../components/landing/Navbar";
 
 function StartupCard({ title, description, image }) {
