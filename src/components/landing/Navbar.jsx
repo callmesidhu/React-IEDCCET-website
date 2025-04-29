@@ -12,6 +12,8 @@ const NAV_ITEMS = [
   { label: "FEEDBACK", to: "feedback" },
   { label: "INO POINTS", to: "inopoints" },
   { label: "CONTACT", to: "contact" },
+  { label: "UPCOMING", to: "section4" },
+  { label: "ACHIEVEMENTS", to: "section6" },
 ];
 
 export default function Navbar() {
