@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import aboutimg from "../../assets/About.png";
-import facultyimg from "../../assets/Faculty.png"
+import facultyimg from "../../assets/Faculty.png";
 
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,38 +23,73 @@ export default function Gallery() {
     setCurrentIndex(newIndex);
   };
 
+  // Auto-scroll effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      goToNext();
+    }, 2000); // 2 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [currentIndex]); // Watch for currentIndex to reset timer
+
   return (
-    <div className="w-full min-h-screen  mx-auto p-6 flex flex-col items-center relative mb-20">
-     
+    <div className="w-full min-h-screen mx-auto p-6 flex flex-col items-center relative mb-20">
+      {/* Decorative Background Shapes */}
+      <img
+        src="/green.png"
+        alt=""
+        className="absolute left-[-50px] -top-[-47px] w-[170px] h-[180px] object-contain"
+      />
+
+      <img
+        src="/purple_d.png"
+        alt=""
+        className="absolute -left-0 -top-[-200px] w-[175px] h-[180px] object-contain"
+      />
+
+      <img
+        src="/green.png"
+        alt=""
+        className="absolute -right-[40px] top-[418px] w-[150px] h-[160px] object-contain rotate-270"
+      />
+
+      <img
+        src="/purple_d.png"
+        alt=""
+        className="absolute -right-[8px] top-[566px] w-[185px] h-[200px] object-contain rotate-270"
+      />
+
+      {/* Title */}
       <h1 className="text-6xl font-bold text-center text-blue-700 m-14">
         Gallery
       </h1>
 
-      <div className="relative w-full max-w-5xl">
-        <div className="border-4 border-blue-700 rounded-2xl overflow-hidden ">
+      {/* Image Slider */}
+      <div className="relative w-full max-w-[1140px]">
+        <div className="border-6 border-blue-500 rounded-3xl overflow-hidden">
           <img
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
-            className="w-full h-[500px] object-cover rounded-xl"
+            className="w-full h-[500px] object-cover rounded-xl transition-all duration-900 ease-in-out"
           />
         </div>
 
+        {/* Navigation Arrows */}
         <button
           onClick={goToPrevious}
-          className="absolute -left-16 top-1/2 transform -translate-y-1/2 bg-white w-10 h-10 rounded-full text-6xl flex items-center justify-center text-blue-700 font-bold"
+          className="absolute -left-14 top-1/2 transform -translate-y-1/2 bg-white w-10 h-10 rounded-full text-6xl flex items-center justify-center text-blue-700 font-bold"
         >
           &lt;
         </button>
-
         <button
           onClick={goToNext}
-          className="absolute -right-16 top-1/2 transform -translate-y-1/2 bg-white   w-10 h-10 rounded-full flex items-center justify-center text-6xl text-blue-700 font-bold"
+          className="absolute -right-14 top-1/2 transform -translate-y-1/2 bg-white w-10 h-10 rounded-full flex items-center justify-center text-6xl text-blue-700 font-bold"
         >
           &gt;
         </button>
       </div>
 
-      {/* Dots below */}
+      {/* Navigation Dots */}
       <div className="flex justify-center mt-6">
         {images.map((_, idx) => (
           <div
