@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const InnovatorsSection = () => {
   return (
-    <div className="bg-[#F8F6F3] min-h-screen flex flex-col items-center py-10 md:py-20 px-6 md:px-12 lg:px-24 xl:px-48">
+    <div className="bg-[#F8F6F3] min-h-screen flex flex-col items-center py-10 px-6 md:px-12 lg:px-24 xl:px-48">
       <motion.h1 
       initial={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.8 }}

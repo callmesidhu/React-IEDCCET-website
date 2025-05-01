@@ -87,7 +87,7 @@ const Contact = () => {
         viewport={{ once: true }}
        
       >
-      <section className="bg-blue-700 text-white p-6 md:p-8 rounded-xl min-w-full mx-auto mt-6 md:mt-10 flex flex-col items-center md:flex-row justify-center gap-6 md:gap-12">
+      <section className="bg-blue-700 text-white p-6 md:p-8 min-w-full mx-auto mt-6 md:mt-10 flex flex-col items-center md:flex-row justify-center gap-6 md:gap-12">
         {/* Left Side: Form */}
         <div className="flex-1 flex flex-col items-center w-full md:max-w-xl">
           <div className="w-full">
