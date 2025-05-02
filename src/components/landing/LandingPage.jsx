@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-scroll";
-import aboutimg from "../../assets/About.png";
 
 function LandingPage() {
   return (
@@ -45,15 +44,12 @@ function LandingPage() {
           </div>
 
         <div
-            className="absolute top-24 right-0 w-[650px] h-[650px] overflow-hidden"
-            style={{
-            clipPath: "polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10%)",
-            }}
+            className="absolute top-0 right-0"
         >
         <img
-            src={aboutimg}
+            src="Vector 2.png"
             alt="Conference Room"
-            className="w-full h-full object-cover border-8 border-blue-600 rounded-tr-[100px] rounded-bl-[100px]"
+            className="w-[850px]"
             />
         </div>
         </div>
@@ -65,6 +61,8 @@ function LandingPage() {
           alt="IEDC Logo"
           className="w-[700px]"
         />
+        <div className="absolute w-[700px] h-full bg-[#0732EF] mix-blend-soft-light pointer-events-none">
+        </div>
         <img
           src="/purple_d.png"
           alt=""
@@ -115,7 +113,7 @@ function LandingPage() {
         </div>
 
         <div className="border-2 border-blue-700 rounded-xl mt-12 p-10 max-w-3xl mx-auto text-center">
-          <p className="text-blue-700 font-bold text-2xl leading-relaxed">
+          <p className="text-blue-700 font-bold text-4xl leading-relaxed">
             “INNOVATION DISTINGUISHES BETWEEN A LEADER AND A FOLLOWER”
           </p>
           <p className="text-gray-500 text-base mt-2">
