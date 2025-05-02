@@ -1,5 +1,7 @@
 import React from "react";
 import { Element } from "react-scroll";
+import { useEffect } from "react";
+import { scroller } from "react-scroll";
 
 import Navbar from "../components/landing/Navbar";
 import LandingPage from "../components/landing/LandingPage";
@@ -11,8 +13,22 @@ import Team from "../components/landing/Team";
 import Feedback from "../components/landing/Feedback";
 import INOPoints from "../components/landing/INOPoints";
 import Contact from "../components/landing/Contact";
-
+import Section4 from "../components/landing/Upcoming";
+import Section6 from "../components/landing/Achievements";
+import Footer from "../components/landing/Footer";
 function Home() {
+  useEffect(() => {
+    const sectionId = localStorage.getItem("scrollToSection");
+    if (sectionId) {
+      scroller.scrollTo(sectionId, {
+        duration: 500,
+        delay: 100,
+        smooth: true,
+        offset: -100,
+      });
+      localStorage.removeItem("scrollToSection");
+    }
+  }, []);
   return (
     <>
       <Navbar />
@@ -24,9 +40,19 @@ function Home() {
       <Element name="about">
         <About />
       </Element>
-
+      <Element name="section4">
+        <Section4 />
+      </Element>
       <Element name="announcements">
         <Announcements />
+      </Element>
+     
+      <Element name="section6">
+        <Section6 />
+      </Element>
+      
+      <Element name="inopoints">
+        <INOPoints />
       </Element>
 
       <Element name="gallery">
@@ -45,13 +71,12 @@ function Home() {
         <Feedback />
       </Element>
 
-      <Element name="inopoints">
-        <INOPoints />
-      </Element>
 
       <Element name="contact">
         <Contact />
       </Element>
+      <Footer />
+      
     </>
   );
 }
