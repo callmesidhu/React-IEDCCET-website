@@ -28,7 +28,7 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="flex space-x-14 text-lg font-medium">
+        <div className="flex text-lg font-medium">
           {NAV_ITEMS.map(({ label, to }) => (
             <Link
               key={to}
@@ -37,7 +37,7 @@ export default function Navbar() {
               smooth={true}
               offset={-100}      
               duration={500}
-              className="cursor-pointer text-black  hover:text-blue-600"
+              className="cursor-pointer mx-6 text-black  hover:text-blue-600"
               activeClass="text-blue-600"
             >
               {label}
