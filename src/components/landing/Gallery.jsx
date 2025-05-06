@@ -19,25 +19,25 @@ export default function Gallery() {
       <img
         src="/green.png"
         alt=""
-        className="absolute left-[-50px] -top-[-47px] w-[170px] h-[180px] object-contain"
+        className="absolute left-[0px] -top-[-47px] w-[170px] h-[180px] object-contain"
       />
       <img
         src="/purple_d.png"
         alt=""
-        className="absolute -left-1 -top-[-200px] w-[175px] h-[180px] object-contain"
+        className="absolute left-0 -top-[-200px] w-[175px] h-[180px] object-contain"
       />
       <img
         src="/green.png"
         alt=""
-        className="absolute -right-[40px] top-[418px] w-[150px] h-[160px] object-contain rotate-270"
+        className="absolute right-[-5px] top-[418px] w-[150px] h-[160px] object-contain rotate-270"
       />
       <img
         src="/purple_d.png"
         alt=""
-        className="absolute -right-[8px] top-[566px] w-[185px] h-[200px] object-contain rotate-270"
+        className="absolute right-[-5px] top-[566px] w-[185px] h-[200px] object-contain rotate-270"
       />
 
-      <h1 className="text-6xl font-bold text-center text-blue-700  m-8">
+      <h1 className="text-6xl font-bold text-center text-blue-700 m-8">
         Gallery
       </h1>
 

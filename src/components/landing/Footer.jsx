@@ -40,7 +40,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-white py-12 border-t">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-1 md:px-6">
         <div className="flex flex-row justify-between">
           {/* Logo Section */}
           <div className="mb-8 md:mb-0">
@@ -57,10 +57,10 @@ export default function Footer() {
           </div>
 
           {/* Right Side Content */}
-          <div className="flex flex-row gap-12 md:gap-24">
+          <div className="flex flex-row gap-5 md:gap-24">
             {/* Quick Links Section */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="sm:text-md  font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 {QUICK_LINKS.map(({ label, to }) => (
                   <li key={to}>
@@ -72,7 +72,7 @@ export default function Footer() {
                         smooth={true}
                         offset={-100}
                         duration={500}
-                        className="text-blue-600 hover:underline cursor-pointer"
+                        className="text-blue-600 sm:text-lg text-sm hover:underline cursor-pointer"
                       >
                         {label}
                       </ScrollLink>
@@ -92,18 +92,18 @@ export default function Footer() {
 
             {/* Follow Us Section */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+              <h3 className="sm:text-md font-semibold mb-4">Follow Us</h3>
               <div className="space-y-3">
                 {SOCIAL_LINKS.map(({ label, icon: Icon, href }) => (
                   <a
                     key={label}
                     href={href}
-                    className="flex items-center gap-2 text-blue-600 hover:underline"
+                    className="flex items-center sm:text-xl text-sm gap-2 text-blue-600 hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Icon className="h-5 w-5" />
-                    <span>{label}</span>
+                    <span className="sm:text-lg text-sm">{label}</span>
                   </a>
                 ))}
               </div>
