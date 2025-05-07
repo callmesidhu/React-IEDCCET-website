@@ -19,7 +19,7 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={toggle}
-      className="ml-8 flex items-center space-x-2 text-sm font-medium"
+      className="sm:ml-8 flex items-center space-x-2 text-sm font-medium"
     >
       <div
         className={`w-12 h-6 p-1 bg-gray-300 rounded-full flex items-center transition ${
