@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 export default function DarkModeToggle() {
   const [mode, setMode] = useState("light");

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-scroll";
 import DarkModeToggle from "./Toggle";
-import menu from '../../assets/menu.svg'
-import close from '../../assets/close.svg'
+import menuIcon from "../../assets/menu.svg";
+import closeIcon from "../../assets/close.svg";
 
 const NAV_ITEMS = [
   { label: "HOME", to: "landing" },
@@ -19,69 +19,117 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
-
   const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleMenu = () => setIsOpen(prev => !prev);
+  const toggleDark = () => setDarkMode(prev => !prev);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="flex items-center justify-between sm:px-6 px-2 py-3">
-        <div>
+    <nav
+      style={{ backgroundColor: darkMode ? '#00092C' : '#FFFFFF', color: darkMode ? '#FFFFFF' : '#000000' }}
+      className="sticky top-0 z-50 shadow-sm"
+    >
+      {/* Mobile Header */}
+      <div className="sm:hidden relative px-2 py-3 flex items-center justify-between">
+        {/* Dark Mode Toggle on Left */}
+        <button
+          onClick={toggleDark}
+          aria-label="Toggle dark mode"
+          className="p-2"
+        >
+          <DarkModeToggle isDark={darkMode} />
+        </button>
+
+        {/* Logo Center */}
+        <img
+          src="/iedc_logo.png"
+          alt="IEDC Logo"
+          className="w-10 h-auto"
+        />
+
+        {/* Menu Toggle on Right */}
+        <button
+          onClick={toggleMenu}
+          className="p-2"
+          aria-label="Toggle menu"
+        >
           <img
-            src="/iedc_logo.png"
-            alt="IEDC Logo"
-            className="w-[40px] h-auto"
+            src={isOpen ? closeIcon : menuIcon}
+            alt="menu toggle"
+            className="w-8 h-auto"
           />
+        </button>
+      </div>
+
+      {/* Desktop Header */}
+      <div className="hidden sm:flex items-center justify-between sm:px-6 px-2 py-3">
+        {/* Logo Left */}
+        <div>
+          <img src="/iedc_logo.png" alt="IEDC Logo" className="w-10 h-auto" />
         </div>
 
-        <div className="flex text-md items-center justify-center font-medium">
+        {/* Links + Dark Mode Toggle */}
+        <div className="flex items-center space-x-6 font-medium">
           {NAV_ITEMS.map(({ label, to }) => (
             <Link
               key={to}
               to={to}
-              spy={true}
-              smooth={true}
-              offset={-100}      
+              spy
+              smooth
+              offset={-100}
               duration={500}
-              className="cursor-pointer sm:block hidden mx-5 text-black  hover:text-blue-600"
+              className="cursor-pointer hover:text-blue-600"
               activeClass="text-blue-600"
             >
               {label}
             </Link>
           ))}
-          <DarkModeToggle/>
-        </div>
-        <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="inline-block sm:hidden text-white z-50 focus:outline-none"
-                        >
-                        {isOpen ? (
-                            <img src={close} className='w-8 bg-white h-auto rounded-sm'/>
-                        ) : (
-                            <img src={menu} className='w-8 bg-white h-auto rounded-sm'/>
-                        )}
+          <button
+            onClick={toggleDark}
+            className="p-2 rounded"
+            aria-label="Toggle dark mode"
+          >
+            <DarkModeToggle isDark={darkMode} />
           </button>
-          {isOpen && (
-            <div className="sm:hidden p-4 top-0 h-svh w-full absolute z-40 bg-gray-50 shadow-lg">
-            <ul className="flex flex-col border-2 rounded-2xl text-xl text-gray-700">
-            {NAV_ITEMS.map(({ label, to }) => (
-            <Link
-              key={to}
-              to={to}
-              spy={true}
-              smooth={true}
-              offset={-100}      
-              duration={500}
-              className="cursor-pointer border-2 p-2 w-full text-center text-black  hover:text-blue-600"
-              activeClass="text-blue-600"
-              onClick={()=>setIsOpen(!isOpen)}
-            >
-              {label}
-            </Link>
-            ))}
-          </ul>
-          </div>
-          )}
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div
+          style={{ backgroundColor: darkMode ? '#00092C' : '#F9FAFB' }}
+          className="sm:hidden absolute top-full w-full py-4 transition-colors duration-300 z-40 shadow-lg"
+        >
+          <ul className="flex flex-col text-center space-y-2">
+            {NAV_ITEMS.map(({ label, to }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  spy
+                  smooth
+                  offset={-100}
+                  duration={500}
+                  className="block py-2 hover:text-blue-600"
+                  activeClass="text-blue-600"
+                  onClick={toggleMenu}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={toggleDark}
+                className="mx-auto mt-2 p-2 rounded"
+                aria-label="Toggle dark mode"
+              >
+                <DarkModeToggle isDark={darkMode} />
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }
