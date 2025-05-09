@@ -9,6 +9,8 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import image from "../../assets/section4.png"
+import { motion } from "framer-motion";
+
 
 function Section4() {
   const events = [

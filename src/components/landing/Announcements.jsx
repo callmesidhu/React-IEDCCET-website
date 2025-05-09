@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const announcements = [
   {
@@ -33,14 +34,26 @@ const announcements = [
   },
 ];
 
+// Fade-in-up variant
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.8 },
+  transition: { duration: 0.6 },
+};
+
 const Announcements = () => {
   return (
-    <div className="min-h-screen  bg-white flex items-center justify-center">
-      <div className="border-3 border-blue-700 rounded-2xl p-12 pr-6  max-w-7xl  overflow-y-auto">
-        <h1 className="text-5xl font-bold text-blue-700 mb-8">Announcements</h1>
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="border-3 border-blue-700 rounded-2xl p-12 pr-6 max-w-7xl overflow-y-auto">
+        <motion.h1
+          {...fadeInUp}
+          className="text-5xl font-bold text-blue-700 mb-8"
+        >
+          Announcements
+        </motion.h1>
 
         <div className="flex flex-col gap-8 h-96 overflow-y-scroll pr-10 rounded-lg">
-          
           <style jsx>{`
             div::-webkit-scrollbar {
               width: 10px;
@@ -53,12 +66,13 @@ const Announcements = () => {
             div::-webkit-scrollbar-thumb {
               background-color: #ccc;
               border-radius: 6px;
-                         
             }
           `}</style>
+
           {announcements.map((announcement, index) => (
-            <div
+            <motion.div
               key={index}
+              {...fadeInUp}
               className="bg-gray-200 border border-gray-700 rounded-md p-6 shadow-sm"
             >
               <p className="text-xs font-bold text-blue-700 uppercase mb-1">
@@ -70,7 +84,7 @@ const Announcements = () => {
               <p className="text-black font-semibold mr-4">
                 {announcement.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

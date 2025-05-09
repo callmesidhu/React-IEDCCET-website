@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 
 import aboutimg from "../../assets/About.png";
 import facultyimg from "../../assets/Faculty.png";
+import { motion } from "framer-motion";
 
 export default function Gallery() {
   const images = [

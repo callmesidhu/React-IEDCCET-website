@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 
 
 export default function StartupCard({ title, description, image }) {
