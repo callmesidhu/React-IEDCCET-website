@@ -15,7 +15,7 @@ export default function Gallery() {
   ];
 
   return (
-    <div className="w-full min-h-screen mx-auto p-6 flex flex-col items-center relative mb-20">
+<div className="w-full min-h-screen mx-auto p-6 flex flex-col items-center relative mb-20 overflow-x-hidden">
       <img
         src="/green.png"
         alt=""
