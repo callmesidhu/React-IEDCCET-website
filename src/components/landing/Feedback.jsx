@@ -17,7 +17,7 @@ function Feedback() {
   const boxBgColor = darkMode ? "#152770" : "white";
   const boxBorder = darkMode ? "none" : "2px solid #0732EF";
   const textColor = darkMode ? "white" : "black";
-  const accentColor = darkMode ? "#3B82F6" : "#0732EF";
+  const accentColor = darkMode ? "white" : "#0732EF";
   const secondaryTextColor = darkMode ? "#A1A1AA" : "gray.600";
 
   return (
