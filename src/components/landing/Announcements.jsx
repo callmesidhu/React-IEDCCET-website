@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useDarkMode } from "../../context/DarkModeContext"; 
 
 const announcements = [
   {
@@ -43,12 +44,25 @@ const fadeInUp = {
 };
 
 const Announcements = () => {
+
+  const { darkMode, setDarkMode } = useDarkMode();
+  const bgColor = darkMode ? "#000414" : "#FFFFFF";
+  
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
-      <div className="border-3 border-blue-700 rounded-2xl p-12 pr-6 max-w-7xl overflow-y-auto">
+    <div
+      className="min-h-screen bg-white flex items-center justify-center"
+      style={{ backgroundColor: bgColor }}
+    >
+      <div
+        className="border-4 border-blue-700 rounded-2xl p-12 pr-6 max-w-7xl overflow-y-auto"
+        style={{ borderColor: darkMode ? "#2164F6" : "#1D4ED8" ,
+          backgroundColor: darkMode ? "#000C3B" : "#FFFFFF",
+        }}
+      >
         <motion.h1
           {...fadeInUp}
           className="text-5xl font-bold text-blue-700 mb-8"
+          style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
         >
           Announcements
         </motion.h1>
@@ -59,13 +73,14 @@ const Announcements = () => {
               width: 10px;
             }
             div::-webkit-scrollbar-track {
-              background: #eff6ff;
+              background: ${darkMode ? "#000000" : "#eff6ff"};
               border-radius: 4px;
               border: 1px solid grey;
             }
             div::-webkit-scrollbar-thumb {
-              background-color: #ccc;
+              background-color: ${darkMode ? "#FFFFFF" : "#cccccc"};
               border-radius: 6px;
+              height: 10px;
             }
           `}</style>
 
@@ -73,15 +88,28 @@ const Announcements = () => {
             <motion.div
               key={index}
               {...fadeInUp}
-              className="bg-gray-200 border border-gray-700 rounded-md p-6 shadow-sm"
+              className="bg-gray-200 border-2 border-gray-700 rounded-md p-6 shadow-sm"
+              style={{
+                borderColor: darkMode ? "#9DAFFF" : "#374151",
+                backgroundColor: darkMode ? "#091B62" : "#E5E7EB", // gray-800 : gray-200
+              }}
             >
-              <p className="text-xs font-bold text-blue-700 uppercase mb-1">
+              <p
+                className="text-xs font-bold text-blue-700 uppercase mb-1"
+                style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
+              >
                 {announcement.date}
               </p>
-              <h2 className="text-2xl font-bold text-blue-700 mb-2">
+              <h2
+                className="text-2xl font-bold text-blue-700 mb-2"
+                style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
+              >
                 {announcement.title}
               </h2>
-              <p className="text-black font-semibold mr-4">
+              <p
+                className=" font-semibold mr-4"
+                style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+              >
                 {announcement.description}
               </p>
             </motion.div>
