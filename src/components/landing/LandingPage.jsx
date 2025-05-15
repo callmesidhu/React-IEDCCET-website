@@ -3,10 +3,24 @@ import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import { useDarkMode } from "../../context/DarkModeContext";
 
+const fadeIn = {
+  initial: { opacity: 0, x: 0 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, amount: 0.5 },
+  transition: { duration: 1.2 },
+};
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 50 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.5 },
+  transition: { duration: 0.8 },
+};
+
 function LandingPage() {
 
   const { darkMode, setDarkMode } = useDarkMode(); 
-  const bgColor = darkMode ? "#000414" : "#F8F6F3";
+  const bgColor = darkMode ? "#000414" : "#FFFFFF";
   const bg2 = darkMode ? "#000C3B" : "#FFFFFF";
   const textColor1 = darkMode ? "#FFFFFF" : "#0732EF";
   const textColor2 = darkMode ? "#FFFFFF" : "#000000";
@@ -18,9 +32,12 @@ function LandingPage() {
       
       <div className="sm:pt-24 pt-14 sm:px-24 px-2 sm:pb-24 pb-14">
 
+      <motion.div {...fadeIn}>
+
         <div className="flex items-start justify-between">
 
           <div className="flex flex-col items-start max-w-[600px]">
+            
             <h1 className="font-bold text-xl sm:text-6xl leading-[1.2]">
               INNOVATION AND <br />
               ENTREPRENEURSHIP <br />
@@ -66,15 +83,19 @@ function LandingPage() {
             />
         </div>
         </div>
+        </motion.div>  
 
         {darkMode?
         <div className="relative sm:mt-[160px] mt-[90px] flex justify-center">
 
+        <motion.div {...fadeInUp}>
         <img
           src="IEDC.png"
           alt="IEDC Logo"
           className="sm:w-[700px] w-[200px]"
         />
+        </motion.div>
+
         <img
           src="/dp_d.png"
           alt=""
@@ -125,11 +146,14 @@ function LandingPage() {
         </div>:
         <div className="relative sm:mt-[160px] mt-[90px] flex justify-center">
 
+        <motion.div {...fadeInUp}>
         <img
           src="IEDC.png"
           alt="IEDC Logo"
           className="sm:w-[700px] w-[200px]"
         />
+        </motion.div>
+
         <div className="absolute sm:w-[700px] w-[250px] h-full bg-[#0732EF] mix-blend-soft-light pointer-events-none">
         </div>
         <img
@@ -181,7 +205,8 @@ function LandingPage() {
 
         </div>}
 
-        <div className="border-2 border-blue-700 rounded-xl sm:mt-12 mt-24 p-10 max-w-3xl mx-auto text-center"
+        <motion.div {...fadeInUp}>
+        <div className="border-2 border-blue-700 rounded-xl sm:mt-24 mt-24 p-10 max-w-3xl mx-auto text-center"
         style={{backgroundColor : bg2}}>
           <p className="text-blue-700 font-bold sm:text-4xl text-xl leading-relaxed"
           style={{color : textColor1}}>
@@ -220,7 +245,7 @@ function LandingPage() {
               We regularly conduct workshops, competitions, hackathons and panel discussion to delve into the latest technologies and processes that drive the industries of today.
             </p>
           </div>
-
+  
           <div className="border-2 border-blue-700 rounded-2xl p-8 flex flex-col items-center text-center"
           style={{backgroundColor : bg2, color : textColor1}}>
             <div className="text-5xl mb-6">🔧</div>
@@ -235,6 +260,7 @@ function LandingPage() {
           </div>
 
         </div>
+        </motion.div>
 
       </div>
     </section>
