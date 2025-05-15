@@ -1,7 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
 
-// Fade-in-up variant for scroll-triggered animation
+import { motion } from "framer-motion";
+import { useDarkMode } from "../../context/DarkModeContext";
+
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -10,16 +10,28 @@ const fadeInUp = {
 };
 
 function Feedback() {
+  const { darkMode } = useDarkMode();
+
+  // Dark mode colors
+  const bgColor = darkMode ? "#000414" : "white";
+  const boxBgColor = darkMode ? "#152770" : "white";
+  const boxBorder = darkMode ? "none" : "2px solid #0732EF";
+  const textColor = darkMode ? "white" : "black";
+  const accentColor = darkMode ? "white" : "#0732EF";
+  const secondaryTextColor = darkMode ? "#A1A1AA" : "gray.600";
+
   return (
     <motion.section
       {...fadeInUp}
-      className="w-full font-grotesk bg-white py-4 sm:py-6 md:py-8 px-4 sm:px-8 md:px-12 lg:px-16"
+      className="w-full font-grotesk py-4 sm:py-6 md:py-8 px-4 sm:px-8 md:px-12 lg:px-16 transition-colors duration-300"
+      style={{ backgroundColor: bgColor,paddingBottom: "6rem",marginBottom: "-3rem" }}
     >
       <div className="mx-auto w-full max-w-[1200px] space-y-6">
 
         <motion.h2
           {...fadeInUp}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#0732EF] mb-4 text-left"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-left transition-colors duration-300"
+          style={{ color: accentColor }}
         >
           Member Feedback
         </motion.h2>
@@ -30,11 +42,16 @@ function Feedback() {
         >
           <motion.div
             {...fadeInUp}
-            className="border-2 border-[#0732EF] rounded-lg p-3 sm:p-4 md:p-6 bg-white shadow-sm"
+            className="rounded-lg p-3 sm:p-4 md:p-6 shadow-sm transition-colors duration-300"
+            style={{ 
+              backgroundColor: boxBgColor,
+              border: boxBorder
+            }}
           >
             <motion.p
               {...fadeInUp}
-              className="text-sm sm:text-base md:text-lg font-medium text-center"
+              className="text-sm sm:text-base md:text-lg font-medium text-center transition-colors duration-300"
+              style={{ color: textColor }}
             >
               "I found my passion and purpose through this club!"
             </motion.p>
@@ -42,8 +59,16 @@ function Feedback() {
               {...fadeInUp}
               className="text-right mt-2 sm:mt-3 md:mt-4"
             >
-              <p className="text-sm sm:text-base font-medium">- Mark Smith</p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p 
+                className="text-sm sm:text-base font-medium transition-colors duration-300"
+                style={{ color: textColor }}
+              >
+                - Mark Smith
+              </p>
+              <p 
+                className="text-xs md:text-sm transition-colors duration-300"
+                style={{ color: secondaryTextColor }}
+              >
                 Chief Marketing Officer
               </p>
             </motion.div>
