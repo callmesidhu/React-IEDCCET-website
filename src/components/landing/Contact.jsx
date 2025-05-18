@@ -3,8 +3,9 @@ import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import { useDarkMode } from "../../context/DarkModeContext";
 
-// Fade-in-up scroll-triggered variant
+// Fade-in-up scroll-triggered variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -14,7 +15,7 @@ const fadeInUp = {
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3},
+  viewport: { once: true, amount: 0.3 },
   transition: { duration: 0.6 },
 };
 
@@ -28,6 +29,10 @@ const Contact = () => {
 
   const [formData, setFormData] = useState(defaultFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { darkMode } = useDarkMode();
+  const bgColor = darkMode ? "#00092C" : "#FFFFFF";
+  const textColor = darkMode ? "#FFFFFF" : "#000000";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -76,7 +81,6 @@ const Contact = () => {
           closeOnClick: false,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined,
           theme: "light",
           transition: Bounce,
         });
@@ -92,7 +96,7 @@ const Contact = () => {
   };
 
   return (
-    <>  
+    <>
       <motion.section
         {...fadeUp}
         className="bg-blue-700 text-white p-6 md:p-8 min-w-full mx-auto mt-6 md:mt-10 flex flex-col items-center md:flex-row justify-center gap-6 md:gap-12"
@@ -206,6 +210,18 @@ const Contact = () => {
         theme="light"
         transition={Bounce}
       />
+
+      {/* Footer */}
+      <footer
+        style={{ backgroundColor: bgColor, color: textColor }}
+        className="w-full py-12 border-t transition-colors duration-300"
+      >
+        <div className="text-center">
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} IEDC CET. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </>
   );
 };
