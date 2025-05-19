@@ -3,8 +3,15 @@
 import { useEffect, useRef, useState } from "react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import image from "../../assets/grant.png"
+import { useDarkMode } from "../../context/DarkModeContext";
 
 function Section4() {
+  const { darkMode } = useDarkMode();
+    // Dark mode colors
+    const bgColor = darkMode ? "#000C3B" : "#0732EF";
+    const textColor = "#FFFFFF";
+    const borderColor = "#FFFFFF";
+  
   const events = [
     {
       title: "Patent Grant",
@@ -120,7 +127,9 @@ function Section4() {
   const arrowPosition = windowWidth < 640 ? "4" : "10"
 
   return (
-    <section className="w-full font-grotesk bg-[#0732EF] py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative">
+    <section className="w-full font-grotesk  py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative"
+    style={{ backgroundColor: bgColor }}>
+      
       <button
         onClick={() => handleManualScroll("prev")}
         className="absolute z-10 text-white rounded-full p-2 sm:p-3 hover:bg-white/10 transition-colors"
