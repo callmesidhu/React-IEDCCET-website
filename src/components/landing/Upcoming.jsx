@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useDarkMode } from "../../context/DarkModeContext";
 import {
   FaPhone,
   FaEnvelope,
@@ -13,6 +14,11 @@ import { motion } from "framer-motion";
 
 
 function Section4() {
+    const { darkMode } = useDarkMode();
+      // Dark mode colors
+      const bgColor = darkMode ? "#000C3B" : "#0732EF";
+      const textColor = "#FFFFFF";
+      const borderColor = "#FFFFFF";
   const events = [
     { title: "Build Club", date: "12/03/2025", image },
     { title: "Tech Talk", date: "20/03/2025", image },
@@ -106,7 +112,8 @@ const imageMiddlePoint = `calc(75% - ${cardHeight / 2}px)`
 const arrowPosition = windowWidth < 640 ? "4" : "10"
 
 return (
-  <section className="w-full font-grotesk bg-[#0732EF] py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative">
+  <section className="w-full font-grotesk bg-[#0732EF] py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative"
+  style={{ backgroundColor: bgColor }}>
     <button
       onClick={() => handleManualScroll("prev")}
       className="absolute z-10 text-white rounded-full p-2 sm:p-3 hover:bg-white/10 transition-colors"
@@ -122,7 +129,7 @@ return (
 
     <div className="mx-auto" style={{ maxWidth: `${maxContainerWidth}px` }}>
       <h2 className="text-2xl  md:text-5xl font-bold text-white text-center mb-4 sm:mb-6 md:mb-8 lg:mb-12">
-        Achievements
+        Upcoming Events
       </h2>
 
       <div className="relative" onMouseEnter={() => setIsPaused(false)} onMouseLeave={() => setIsPaused(false)}>
