@@ -54,20 +54,20 @@ const Announcements = () => {
       style={{ backgroundColor: bgColor }}
     >
       <div
-        className="border-4 border-blue-700 rounded-2xl p-12 pr-6 max-w-7xl overflow-y-auto"
+        className="border-4 rounded-2xl p-6 md:p-12 pr-6  w-[90%] md:max-w-7xl overflow-y-auto"
         style={{ borderColor: darkMode ? "#2164F6" : "#1D4ED8" ,
           backgroundColor: darkMode ? "#000C3B" : "#FFFFFF",
         }}
       >
         <motion.h1
           {...fadeInUp}
-          className="text-5xl font-bold text-blue-700 mb-8"
+          className="text-4xl md:text-5xl font-bold  mb-8"
           style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
         >
           Announcements
         </motion.h1>
 
-        <div className="flex flex-col gap-8 h-96 overflow-y-scroll pr-10 rounded-lg">
+        <div className="flex flex-col gap-8 h-96 overflow-y-scroll pr-6  md:pr-10 rounded-lg">
           <style jsx>{`
             div::-webkit-scrollbar {
               width: 10px;

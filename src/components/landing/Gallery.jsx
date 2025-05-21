@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import aboutimg from "../../assets/About.png";
 import facultyimg from "../../assets/Faculty.png";
 import { motion } from "framer-motion";
-import { useDarkMode } from "../../context/DarkModeContext"; 
+import { useDarkMode } from "../../context/DarkModeContext";
 
 export default function Gallery() {
   const images = [
@@ -17,32 +17,53 @@ export default function Gallery() {
   ];
 
   const { darkMode, setDarkMode } = useDarkMode();
-    const bgColor = darkMode ? "#000414" : "#FFFFFF";
-    
+  const bgColor = darkMode ? "#000414" : "#FFFFFF";
+
   return (
     <div
       className="w-full min-h-[120vh] mx-auto  flex flex-col items-center relative px-4 pt-10 pb-20 overflow-hidden"
       style={{ backgroundColor: bgColor }}
     >
       <img
-        src="/green.png"
+        src={darkMode ? "/blue1.png" : "/green.png"}
         alt=""
-        className="absolute left-[-12.7%] -top-[-2%] w-[24%] h-[28.5%] object-contain"
+        className={
+          darkMode
+            ? "absolute left-[-2%] top-[-3%] w-[12%] h-[20%] object-contain md:-left-[1.2%] md:top-[-1.1%] md:w-[8.5%] md:h-[32.5%]"
+            : "absolute left-[-2%] -top-[-3%] w-[15%] h-[20%] object-contain  md:left-[-10.7%] md:-top-[-4.4%] md:w-[20%] md:h-[26.5%] md:object-contain"
+        }
       />
+
+    
+       
       <img
-        src="/purple_d.png"
+        src={darkMode ? "/darkblue.png" : "/purple_d.png"}
         alt=""
-        className="absolute left-[-5.4%] -top-[-25%] w-[21%] h-[21.5%] object-contain"
+        className={
+          darkMode
+            ? "absolute left-[-4.8%] -top-[-25%] w-[20.5%] h-[20%] object-contain"
+            : "absolute left-[-4.8%] -top-[-25%] w-[20%] h-[20%] object-contain"
+        }
       />
+
       <img
-        src="/green.png"
+        src={darkMode ? "/darkblue2.png" : "/green.png"}
         alt=""
-        className="absolute right-[-1.7%] top-[52.4%] w-[150px] h-[160px] object-contain rotate-270"
+        className={
+          darkMode
+            ? "absolute  right-[-7.5%] top-[48.3%] w-[21.8%] h-[26.5%] object-contain"
+            : "absolute  right-[-8.8%] top-[49.5%] w-[20%] h-[22.5%] object-contain rotate-270"
+        }
       />
+
       <img
-        src="/purple_d.png"
+        src={darkMode ? "/blue2.png" : "/purple1.png"}
         alt=""
-        className="absolute right-[-0.5%] top-[70.3%] w-[190px] h-[200px] object-contain rotate-270"
+        className={
+          darkMode
+            ? "absolute right-[-4%] top-[70.7%] w-[19%] h-[21.8%] object-contain "
+            : "absolute right-[-4.9%] top-[70.6%] w-[21%] h-[22%] object-contain"
+        }
       />
 
       <h1
