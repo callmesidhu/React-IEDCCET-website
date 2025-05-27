@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDarkMode } from "../../context/DarkModeContext";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/configs"; // adjust path as needed
 
 
 
@@ -15,27 +17,12 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 
-const Faculty =
-  "https://www.vhv.rs/dpng/d/426-4264903_user-avatar-png-picture-avatar-profile-dummy-transparent.png";
-const sampleTeam = {
-  id: 1,
-  name: "Dr. Suresh Babu",
-  designation: "Principal",
-  email: "principal@cet.ac.in",
-  phone: "+91 0000000000",
-  image: Faculty,
-};
-
-const facultyData = Array.from({ length: 6 }, (_, i) => ({
-  ...sampleTeam,
-  id: i + 1,
-}));
 
 function FacultyCards() {
   const { darkMode } = useDarkMode();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-
+  const [facultys,setFaculty] = useState([]);
   // Dark mode colors
   const bgColor = darkMode ? "#000C3B" : "#0732EF";
   const textColor = "#FFFFFF";
@@ -64,6 +51,24 @@ function FacultyCards() {
     return 3;
   };
 
+  useEffect(() => {
+    const fetchFaculty = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Faculty"));
+        const facultyData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setFaculty(facultyData);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchFaculty();
+  }, []);
+
+
   const cardsToShow = getCardsToShow();
   const gap = windowWidth < 640 ? 16 : 20;
   const containerPadding = windowWidth < 640 ? 16 : 120;
@@ -90,7 +95,7 @@ function FacultyCards() {
         }}
       >
         <img
-          src={faculty.image}
+          src={faculty.imageUrl}
           alt={faculty.name}
           className="w-full h-full object-cover"
           style={{
@@ -149,6 +154,8 @@ function FacultyCards() {
     </div>
   );
 
+
+
   return (
     <section 
       className="w-full font-grotesk py-6 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 relative transition-colors duration-300"
@@ -179,7 +186,7 @@ function FacultyCards() {
                 '--swiper-pagination-bullet-horizontal-gap': '6px'
               }}
             >
-              {facultyData.map((faculty) => (
+              {facultys.map((faculty) => (
                 <SwiperSlide key={faculty.id}>
                   <div className="px-2 pb-10"> {/* Added padding for pagination */}
                     <FacultyCard faculty={faculty} />
@@ -218,7 +225,7 @@ function FacultyCards() {
               loop={true}
               navigation={false}
             >
-              {facultyData.map((faculty) => (
+              {facultys.map((faculty) => (
                 <SwiperSlide key={faculty.id} style={{ width: `${cardWidth}px` }}>
                   <FacultyCard faculty={faculty} />
                 </SwiperSlide>

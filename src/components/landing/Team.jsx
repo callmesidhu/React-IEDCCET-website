@@ -13,21 +13,13 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 
-const Faculty = "https://www.vhv.rs/dpng/d/426-4264903_user-avatar-png-picture-avatar-profile-dummy-transparent.png";
-const sampleFaculty = {
-  id: 1,
-  name: "Dr. Suresh Babu",
-  designation: "Principal",
-  email: "principal@cet.ac.in",
-  phone: "+91 0000000000",
-  image: Faculty,
-};
-const facultyData = Array.from({ length: 6 }, (_, i) => ({
-  ...sampleFaculty,
-  id: i + 1,
-}));
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/configs"; // adjust path as needed
+
+
 
 function TeamCards() {
+  const [team,setTeam] = useState([]);
   const { darkMode } = useDarkMode();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
@@ -49,6 +41,25 @@ function TeamCards() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Team"));
+        const teamData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTeam(teamData);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
 
   // Image dimensions
   const IMAGE_WIDTH = 400;
@@ -89,7 +100,7 @@ function TeamCards() {
         }}
       >
         <img
-          src={faculty.image}
+          src={faculty.imageUrl}
           alt={faculty.name}
           className="w-full h-full object-cover"
           style={{
@@ -178,7 +189,7 @@ function TeamCards() {
                 '--swiper-pagination-bullet-horizontal-gap': '6px'
               }}
             >
-              {facultyData.map((faculty) => (
+              {team.map((faculty) => (
                 <SwiperSlide key={faculty.id}>
                   <div className="px-2 pb-10">
                     <TeamMemberCard faculty={faculty} />
@@ -218,7 +229,7 @@ function TeamCards() {
               loop={true}
               navigation={false}
             >
-              {facultyData.map((faculty) => (
+              {team.map((faculty) => (
                 <SwiperSlide key={faculty.id} style={{ width: `${cardWidth}px` }}>
                   <TeamMemberCard faculty={faculty} />
                 </SwiperSlide>

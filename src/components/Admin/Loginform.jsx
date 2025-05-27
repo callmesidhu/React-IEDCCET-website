@@ -23,8 +23,8 @@ const Loginform = ({ onLogin }) => {
 
   
   return (
-    <div className="bg-gray-800 flex items-center justify-center min-h-screen ">
-      <div className="bg-gray-900 p-10 border-2 border-fuchsia-700 rounded-xl  w-full max-w-md">
+    <div className="bg-[#000414] flex items-center justify-center min-h-screen ">
+      <div className="bg-[#000C3B] p-10 border-4 border-[#0732EF] rounded-xl  w-full max-w-md">
         <h2 className="text-4xl font-bold mb-6  text-white text-center">
           Admin Login
         </h2>
@@ -33,7 +33,7 @@ const Loginform = ({ onLogin }) => {
             <label className="block mb-2 text-white text-lg">Email</label>
             <input
               type="email"
-              className="w-full px-4 py-3 border text-white rounded-xl text-lg focus:outline-none  focus:border-fuchsia-700 "
+              className="w-full px-4 py-3 border text-white rounded-xl text-lg focus:outline-none  focus:border-blue-700 "
               placeholder="admin@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -44,7 +44,7 @@ const Loginform = ({ onLogin }) => {
             <label className="block mb-2 text-white text-lg">Password</label>
             <input
               type="password"
-              className="w-full mb-2 text-white px-4 py-3 border rounded-xl  text-lg focus:outline-none  focus:border-fuchsia-700"
+              className="w-full mb-2 text-white px-4 py-3 border rounded-xl  text-lg focus:outline-none  focus:border-blue-700"
               placeholder="********"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -53,8 +53,7 @@ const Loginform = ({ onLogin }) => {
           </div>
           <button
             type="submit"
-            
-            className="w-full  text-lg bg-fuchsia-700 text-white py-3 font-bold rounded-xl hover:bg-fuchsia-900 transition"
+            className="w-full  text-lg bg-[#0732EF] text-white py-3 font-bold rounded-xl hover:bg-[#001F9A] transition"
           >
             Login
           </button>

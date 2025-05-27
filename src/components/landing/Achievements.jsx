@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from "react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import image from "../../assets/grant.png"
 import { useDarkMode } from "../../context/DarkModeContext";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/configs";
+
 
 function Section4() {
   const { darkMode } = useDarkMode();
@@ -12,43 +15,7 @@ function Section4() {
     const textColor = "#FFFFFF";
     const borderColor = "#FFFFFF";
   
-  const events = [
-    {
-      title: "Patent Grant",
-      date: "12/03/2025",
-      image,
-      content:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    },
-    {
-      title: "Patent Grant",
-      date: "20/03/2025",
-      image,
-      content:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    },
-    {
-      title: "Patent Grant",
-      date: "25/03/2025",
-      image,
-      content:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    },
-    {
-      title: "Patent Grant",
-      date: "28/03/2025",
-      image,
-      content:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    },
-    {
-      title: "Patent Grant",
-      date: "01/04/2025",
-      image,
-      content:
-        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    },
-  ]
+
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -100,11 +67,11 @@ function Section4() {
   const cardHeight = cardWidth * (IMAGE_HEIGHT / IMAGE_WIDTH)
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev >= events.length - cardsToShow ? 0 : prev + 1))
+    setCurrentIndex((prev) => (prev >= achievements.length - cardsToShow ? 0 : prev + 1))
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? events.length - cardsToShow : prev - 1))
+    setCurrentIndex((prev) => (prev <= 0 ? achievements.length - cardsToShow : prev - 1))
   }
 
   const handleManualScroll = (direction) => {
@@ -125,6 +92,27 @@ function Section4() {
 
   const imageMiddlePoint = `calc(75% - ${cardHeight / 2}px)`
   const arrowPosition = windowWidth < 640 ? "4" : "10"
+
+
+   const [achievements,setAchievements] = useState([]);
+
+  
+   useEffect(() => {
+     const fetchAchievements = async () => {
+       try {
+         const querySnapshot = await getDocs(collection(db, "Achievements"));
+         const achievementsData = querySnapshot.docs.map((doc) => ({
+           id: doc.id,
+           ...doc.data(),
+         }));
+         setAchievements(achievementsData);
+       } catch (error) {
+         console.error("Error fetching achievements:", error);
+       }
+     };
+
+     fetchAchievements();
+   }, []);
 
   return (
     <section className="w-full font-grotesk  py-4 sm:py-6 md:py-8 lg:py-16 px-2 sm:px-4 relative"
@@ -162,7 +150,7 @@ function Section4() {
                 gap: `${gap}px`,
               }}
             >
-              {events.map((event, index) => (
+              {achievements.map((achievement, index) => (
                 <div key={index} className="flex-shrink-0" style={{ width: `${cardWidth}px` }}>
                   <div className="flex flex-col items-center">
                     <div
@@ -174,8 +162,8 @@ function Section4() {
                       }}
                     >
                       <img
-                        src={event.image || "/placeholder.svg"}
-                        alt={event.title}
+                        src={achievement.imageUrl || "/placeholder.svg"}
+                        alt={achievement.title}
                         className="w-full h-full object-cover"
                         style={{
                           clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
