@@ -3,21 +3,39 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/configs"; // adjust path as needed
+import { useState,useEffect } from "react";
 import aboutimg from "../../assets/About.png";
 import facultyimg from "../../assets/Faculty.png";
 import { motion } from "framer-motion";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 export default function Gallery() {
-  const images = [
-    { id: 1, src: aboutimg, alt: "Meeting room" },
-    { id: 2, src: facultyimg, alt: "Conference" },
-    { id: 3, src: aboutimg, alt: "Collaboration" },
-  ];
+  
 
   const { darkMode, setDarkMode } = useDarkMode();
   const bgColor = darkMode ? "#000414" : "#FFFFFF";
+
+
+  const [images,setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Gallery"));
+        const imagesData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setImages(imagesData);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   return (
     <div
@@ -79,13 +97,13 @@ export default function Gallery() {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop
+          
           className="rounded-2xl overflow-hidden"
         >
           {images.map((img) => (
             <SwiperSlide key={img.id}>
               <img
-                src={img.src}
+                src={img.imageUrl}
                 alt={img.alt}
                 className="w-full h-[500px] object-cover"
               />

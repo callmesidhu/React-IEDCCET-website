@@ -1,39 +1,10 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import { motion } from "framer-motion";
 import { useDarkMode } from "../../context/DarkModeContext"; 
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/configs";
 
-const announcements = [
-  {
-    date: "March 2, 2025",
-    title: "Quickfolio",
-    description:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-  },
-  {
-    date: "March 2, 2025",
-    title: "Quickfolio",
-    description:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-  },
-  {
-    date: "March 2, 2025",
-    title: "Quickfolio",
-    description:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-  },
-  {
-    date: "March 2, 2025",
-    title: "Quickfolio",
-    description:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-  },
-  {
-    date: "March 2, 2025",
-    title: "Quickfolio",
-    description:
-      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-  },
-];
+
 
 // Fade-in-up variant
 const fadeInUp = {
@@ -45,9 +16,24 @@ const fadeInUp = {
 
 const Announcements = () => {
 
+  const [announcements,setAnnouncements] = useState([]);
   const { darkMode, setDarkMode } = useDarkMode();
   const bgColor = darkMode ? "#000414" : "#FFFFFF";
   
+  useEffect(() =>{
+     const fetchAnnouncements = async () =>{
+      try{
+           const querySnapshot = await getDocs(collection(db,"Announcements"));
+           const announcementsData = querySnapshot.docs.map(doc => ({ id:doc.id,...doc.data()}));
+           setAnnouncements(announcementsData);
+      }catch(error){
+        console.error("Error fetching announcements: ",error);
+      }
+     }
+
+     fetchAnnouncements();
+  },[]);
+
   return (
     <div
       className="min-h-screen bg-white flex items-center justify-center"
