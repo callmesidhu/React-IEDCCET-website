@@ -5,9 +5,24 @@ import Achievements from "./Achievements";
 import Gallery from "./Gallery";
 import Faculty from "./Faculty";
 import Team from "./Team";
+import { signOut } from "firebase/auth";
+import { auth } from "../../services/configs";
+import { useNavigate } from "react-router-dom"; // Fixed here
+
+
 
 const Dashboard = () => {
   const [selectedPage, setSelectedPage] = useState("upcomingevents");
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/admin");
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
 
   return (
     <div className="flex min-h-screen text-white bg-gray-900">
@@ -52,7 +67,10 @@ const Dashboard = () => {
             Team
           </button>
         </nav>
-        <button className="mt-auto bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-lg mt-10">
+        <button
+          className="mt-auto bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-lg mt-10"
+          onClick={handleLogout}
+        >
           Logout
         </button>
       </div>

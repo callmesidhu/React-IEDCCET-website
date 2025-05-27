@@ -3,7 +3,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/configs";
 import { useNavigate } from "react-router-dom";
 
-
 const Loginform = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,13 +14,14 @@ const Loginform = ({ onLogin }) => {
     setError("");
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("admin/dashboard");
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
       setError("Invalid credentials. Please try again.");
     }
   };
 
+  
   return (
     <div className="bg-gray-800 flex items-center justify-center min-h-screen ">
       <div className="bg-gray-900 p-10 border-2 border-fuchsia-700 rounded-xl  w-full max-w-md">
@@ -53,6 +53,7 @@ const Loginform = ({ onLogin }) => {
           </div>
           <button
             type="submit"
+            
             className="w-full  text-lg bg-fuchsia-700 text-white py-3 font-bold rounded-xl hover:bg-fuchsia-900 transition"
           >
             Login
