@@ -3,42 +3,91 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/configs"; // adjust path as needed
+import { useState,useEffect } from "react";
 import aboutimg from "../../assets/About.png";
 import facultyimg from "../../assets/Faculty.png";
 import { motion } from "framer-motion";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 export default function Gallery() {
-  const images = [
-    { id: 1, src: aboutimg, alt: "Meeting room" },
-    { id: 2, src: facultyimg, alt: "Conference" },
-    { id: 3, src: aboutimg, alt: "Collaboration" },
-  ];
+  
+
+  const { darkMode, setDarkMode } = useDarkMode();
+  const bgColor = darkMode ? "#000414" : "#FFFFFF";
+
+
+  const [images,setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Gallery"));
+        const imagesData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setImages(imagesData);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   return (
-<div className="w-full min-h-screen mx-auto p-6 flex flex-col items-center relative mb-20 overflow-x-hidden">
+    <div
+      className="w-full min-h-[120vh] mx-auto  flex flex-col items-center relative px-4 pt-10 pb-20 overflow-hidden"
+      style={{ backgroundColor: bgColor }}
+    >
       <img
-        src="/green.png"
+        src={darkMode ? "/blue1.png" : "/green.png"}
         alt=""
-        className="absolute left-[0px] -top-[-47px] w-[170px] h-[180px] object-contain"
-      />
-      <img
-        src="/purple_d.png"
-        alt=""
-        className="absolute left-0 -top-[-200px] w-[175px] h-[180px] object-contain"
-      />
-      <img
-        src="/green.png"
-        alt=""
-        className="absolute right-[-5px] top-[418px] w-[150px] h-[160px] object-contain rotate-270"
-      />
-      <img
-        src="/purple_d.png"
-        alt=""
-        className="absolute right-[-5px] top-[566px] w-[185px] h-[200px] object-contain rotate-270"
+        className={
+          darkMode
+            ? "absolute left-[-2%] top-[-3%] w-[12%] h-[20%] object-contain md:-left-[1.2%] md:top-[-1.1%] md:w-[8.5%] md:h-[32.5%]"
+            : "absolute left-[-2%] -top-[-3%] w-[15%] h-[20%] object-contain  md:left-[-10.7%] md:-top-[-4.4%] md:w-[20%] md:h-[26.5%] md:object-contain"
+        }
       />
 
-      <h1 className="text-6xl font-bold text-center text-blue-700 m-8">
+    
+       
+      <img
+        src={darkMode ? "/darkblue.png" : "/purple_d.png"}
+        alt=""
+        className={
+          darkMode
+            ? "absolute left-[-4.8%] -top-[-25%] w-[20.5%] h-[20%] object-contain"
+            : "absolute left-[-4.8%] -top-[-25%] w-[20%] h-[20%] object-contain"
+        }
+      />
+
+      <img
+        src={darkMode ? "/darkblue2.png" : "/green.png"}
+        alt=""
+        className={
+          darkMode
+            ? "absolute  right-[-7.5%] top-[48.3%] w-[21.8%] h-[26.5%] object-contain"
+            : "absolute  right-[-8.8%] top-[49.5%] w-[20%] h-[22.5%] object-contain rotate-270"
+        }
+      />
+
+      <img
+        src={darkMode ? "/blue2.png" : "/purple1.png"}
+        alt=""
+        className={
+          darkMode
+            ? "absolute right-[-4%] top-[70.7%] w-[19%] h-[21.8%] object-contain "
+            : "absolute right-[-4.9%] top-[70.6%] w-[21%] h-[22%] object-contain"
+        }
+      />
+
+      <h1
+        className="text-6xl font-bold text-center text-blue-700 m-8"
+        style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
+      >
         Gallery
       </h1>
 
@@ -48,13 +97,13 @@ export default function Gallery() {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop
+          
           className="rounded-2xl overflow-hidden"
         >
           {images.map((img) => (
             <SwiperSlide key={img.id}>
               <img
-                src={img.src}
+                src={img.imageUrl}
                 alt={img.alt}
                 className="w-full h-[500px] object-cover"
               />

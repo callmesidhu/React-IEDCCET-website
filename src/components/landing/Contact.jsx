@@ -3,8 +3,9 @@ import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import { useDarkMode } from "../../context/DarkModeContext";
 
-// Fade-in-up scroll-triggered variant
+// Fade-in-up scroll-triggered variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -14,7 +15,7 @@ const fadeInUp = {
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3},
+  viewport: { once: true, amount: 0.3 },
   transition: { duration: 0.6 },
 };
 
@@ -28,6 +29,14 @@ const Contact = () => {
 
   const [formData, setFormData] = useState(defaultFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { darkMode } = useDarkMode();
+  const bgColor = darkMode ? "#00092C" : "#FFFFFF";
+  const textColor = darkMode ? "#FFFFFF" : "#000000";
+  const inputBg = darkMode ? "bg-gray-800" : "bg-white";
+  const inputText = darkMode ? "text-white" : "text-black";
+  const focusRing = darkMode ? "focus:ring-blue-300" : "focus:ring-blue-500";
+  const buttonBg = darkMode ? "bg-white text-blue-700 hover:bg-gray-200" : "bg-white text-blue-700 hover:bg-purple-100";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -69,17 +78,7 @@ const Contact = () => {
       }).then((res) => res.json());
 
       if (res.success) {
-        toast.success("Message sent successfully!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.success("Message sent successfully!");
         setFormData(defaultFormData);
       } else {
         toast.error("Failed to send message. Please try again.");
@@ -92,10 +91,12 @@ const Contact = () => {
   };
 
   return (
-    <>  
+    <>
       <motion.section
         {...fadeUp}
-        className="bg-blue-700 text-white p-6 md:p-8 min-w-full mx-auto mt-6 md:mt-10 flex flex-col items-center md:flex-row justify-center gap-6 md:gap-12"
+        className={`${
+          darkMode ? "bg-[#00092C] text-white" : "bg-blue-700 text-white"
+        } p-6 md:p-8 min-w-full mx-auto mt-6 md:mt-10 flex flex-col items-center md:flex-row justify-center gap-6 md:gap-12`}
       >
         {/* Left Side: Form */}
         <motion.div
@@ -115,9 +116,8 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="p-3 bg-white rounded-lg w-full sm:w-1/2 text-black focus:ring-2 focus:ring-blue-500"
+                className={`p-3 rounded-lg w-full sm:w-1/2 ${inputBg} ${inputText} ${focusRing}`}
                 required
-                aria-label="Your Name"
               />
               <motion.input
                 {...fadeInUp}
@@ -126,9 +126,8 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Your Email"
-                className="p-3 bg-white rounded-lg w-full sm:w-1/2 text-black focus:ring-2 focus:ring-blue-500"
+                className={`p-3 rounded-lg w-full sm:w-1/2 ${inputBg} ${inputText} ${focusRing}`}
                 required
-                aria-label="Your Email"
               />
             </div>
             <motion.input
@@ -138,9 +137,8 @@ const Contact = () => {
               value={formData.subject}
               onChange={handleChange}
               placeholder="Subject"
-              className="p-3 rounded-lg bg-white w-full text-black focus:ring-2 focus:ring-blue-500"
+              className={`p-3 rounded-lg w-full ${inputBg} ${inputText} ${focusRing}`}
               required
-              aria-label="Subject"
             />
             <motion.textarea
               {...fadeInUp}
@@ -148,14 +146,17 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="Message"
-              className="p-3 rounded-lg bg-white w-full h-32 text-black focus:ring-2 focus:ring-blue-500"
+              className={`p-3 rounded-lg w-full h-32 ${inputBg} ${inputText} ${focusRing}`}
               required
-              aria-label="Message"
             />
             <motion.div {...fadeInUp} className="flex justify-center md:justify-end">
               <button
                 type="submit"
-                className="bg-white text-blue-700 px-6 py-2 rounded-full border-2 border-white font-semibold hover:bg-purple-100 transition"
+                className={`px-6 py-2 rounded-full border-2 font-semibold transition ${
+    darkMode
+      ? "bg-[#00092C] text-white border-white hover:bg-[#001144]"
+      : "bg-white text-blue-700 border-white hover:bg-purple-100"
+  }`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message →"}
@@ -203,9 +204,21 @@ const Contact = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme={darkMode ? "dark" : "light"}
         transition={Bounce}
       />
+
+      {/* Footer */}
+      <footer
+        style={{ backgroundColor: bgColor, color: textColor }}
+        className="w-full py-12 border-t transition-colors duration-300"
+      >
+        <div className="text-center">
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} IEDC CET. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </>
   );
 };

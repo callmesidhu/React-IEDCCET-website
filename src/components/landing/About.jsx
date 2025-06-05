@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import aboutimg from "../../assets/About.png";
+import { useDarkMode } from "../../context/DarkModeContext"; 
 
 const fadeInUp = {
   initial: { opacity: 0, y: 50 },
@@ -10,13 +11,21 @@ const fadeInUp = {
 };
 
 const About = () => {
-  return (
-    <div className="min-h-screen px-4 md:px-20 my-14 space-y-14">
 
+   const {darkMode,setDarkMode} = useDarkMode();
+   const bgColor = darkMode ? "#000414" : "#FFFFFF";
+   const textColor = darkMode ? "#FFFFFF" : "#000000";
+
+  return (
+    <div
+      style={{ backgroundColor: bgColor, color: textColor }}
+      className="min-h-screen px-4 md:p-20 mt-14 space-y-14"
+    >
       {/* Title */}
       <motion.h1
         {...fadeInUp}
-        className="text-4xl md:text-5xl font-bold text-blue-700 text-center md:text-left"
+        className="text-4xl md:text-5xl font-bold text-center md:text-left"
+        style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
       >
         IEDC CET
       </motion.h1>
@@ -24,24 +33,36 @@ const About = () => {
       {/* Divider */}
       <motion.hr
         {...fadeInUp}
-        className="border-t-2 border-blue-700 my-7"
+        className="border-t-2 border-blue-700 my-6"
+        style={{ borderColor: darkMode ? "#9DAFFF" : "#1D4ED8" }}
       />
 
       {/* Section 1: Our Vision */}
       <motion.div
         {...fadeInUp}
-        className="bg-white p-6 rounded-xl shadow-lg mb-10 border-2 border-blue-700"
+        className="bg-white p-6 rounded-xl shadow-lg mb-10 border-2"
+        style={{
+          borderColor: darkMode ? "#0676D6" : "#1D4ED8",
+          backgroundColor: darkMode ? "#000C3B" : "#FFFFFF",
+        }}
       >
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-3/5">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+            <h2
+              className="text-3xl md:text-4xl font-bold  mb-4"
+              style={{ color: darkMode ? "#4CAFFF" : "#1D4ED8" }}
+            >
               Our Vision
             </h2>
-            <p className="text-black text-lg leading-relaxed">
+            <p
+              className=" text-lg leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin professor at
-              Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
+              making it over 2000 years old. Richard McClintock, a Latin
+              professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words,
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -57,18 +78,29 @@ const About = () => {
       {/* Section 2: About IEDC */}
       <motion.div
         {...fadeInUp}
-        className="bg-white p-6 rounded-xl shadow-lg mb-10 border-2 border-blue-700"
+        className="bg-white p-6 rounded-xl shadow-lg mb-10 border-2 "
+        style={{
+          borderColor: darkMode ? "#0676D6" : "#1D4ED8",
+          backgroundColor: darkMode ? "#000C3B" : "#FFFFFF",
+        }}
       >
         <div className="flex flex-col md:flex-row-reverse items-center gap-8">
           <div className="md:w-3/5">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+            <h2
+              className="text-3xl md:text-4xl font-bold  mb-4"
+              style={{ color: darkMode ? "#4CAFFF" : "#1D4ED8" }}
+            >
               About IEDC
             </h2>
-            <p className="text-black text-lg leading-relaxed">
+            <p
+              className="text-black text-lg leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin professor at
-              Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
+              making it over 2000 years old. Richard McClintock, a Latin
+              professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words,
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -84,18 +116,29 @@ const About = () => {
       {/* Section 3: Objectives */}
       <motion.div
         {...fadeInUp}
-        className="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-700"
+        className="bg-white p-6 rounded-xl shadow-lg border-2"
+        style={{
+          borderColor: darkMode ? "#0676D6" : "#1D4ED8",
+          backgroundColor: darkMode ? "#000C3B" : "#FFFFFF",
+        }}
       >
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="md:w-3/5">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-4">
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ color: darkMode ? "#4CAFFF" : "#1D4ED8" }}
+            >
               Objectives
             </h2>
-            <p className="text-black text-lg leading-relaxed">
+            <p
+              className="text-black text-lg leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin professor at
-              Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
+              making it over 2000 years old. Richard McClintock, a Latin
+              professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words,
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -107,7 +150,6 @@ const About = () => {
           </div>
         </div>
       </motion.div>
-
     </div>
   );
 };
