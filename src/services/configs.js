@@ -6,9 +6,8 @@ import { getFirestore, collection, addDoc, updateDoc } from "firebase/firestore"
 
 // Your Firebase configuration using environment variables
 import { getAuth } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-// ✅ Declare the firebaseConfig object
+
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

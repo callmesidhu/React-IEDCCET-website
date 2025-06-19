@@ -98,9 +98,22 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            
           </div>
+          
         </div>
       </div>
+            {/* Footer */}
+      <footer
+        style={{ backgroundColor: bgColor, color: textColor }}
+        className="w-full py-12 border-t transition-colors duration-300"
+      >
+        <div className="text-center">
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} IEDC CET. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </footer>
   );
 }
