@@ -1,19 +1,13 @@
 import React from "react";
-import { Link as ScrollLink } from "react-scroll";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Facebook, Linkedin, Instagram, Twitter } from "lucide-react";
-import { useDarkMode } from "../../context/DarkModeContext"; 
+import { useDarkMode } from "../../context/DarkModeContext";
 
-
-const QUICK_LINKS = [
-  { label: "ABOUT", to: "about" },
-  { label: "IGNITES", to: "ignites" },
-  { label: "EVENTS", to: "section4" },
-  { label: "ANNOUNCEMENTS", to: "announcements" },
-  { label: "ACHIEVEMENTS", to: "section6" },
-  { label: "INQ POINTS", to: "inopoints" },
-  { label: "TEAM", to: "team" },
-  { label: "CONTACT", to: "contact" },
+const NAV_ITEMS = [
+  { label: "HOME", to: "/" },
+  { label: "INNOVATORS", to: "/innovators" },
+  { label: "START UPS", to: "/startups" },
+  { label: "PORTAL", to: "/portal" },
 ];
 
 const SOCIAL_LINKS = [
@@ -24,96 +18,68 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === "/";
-  const { darkMode, setDarkMode } = useDarkMode(); 
+  const { darkMode } = useDarkMode();
   const bgColor = darkMode ? "#00092C" : "#FFFFFF";
   const textColor = darkMode ? "#FFFFFF" : "#000000";
-
-  const handleLinkClick = (sectionId) => {
-    if (!isHomePage) {
-      localStorage.setItem("scrollToSection", sectionId);
-      navigate("/");
-    }
-  };
 
   return (
     <footer
       style={{ backgroundColor: bgColor, color: textColor }}
       className="w-full py-12 border-t transition-colors duration-300"
     >
-      <div className="container mx-auto px-1 md:px-6">
-        <div className="flex flex-row justify-between items-start">
-          <div className="flex flex-col items-start gap-4 mb-8 md:mb-0">
-            <div className="w-24 h-24 relative">
-              <img src="/iedc_logo.png" alt="IEDC Logo" className="object-cover" />
-            </div>
-            
+      <div className="container mx-auto px-4 md:px-8 flex flex-row justify-between gap-10">
+        {/* Logo */}
+        <div className="flex flex-col items-start gap-4">
+          <div className="w-24 h-24 relative">
+            <img src="/iedc_logo.png" alt="IEDC Logo" className="object-cover" />
           </div>
-          <div>
-            <h3 className="sm:text-md font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {QUICK_LINKS.map(({ label, to }) => (
-                <li key={to}>
-                  {isHomePage ? (
-                    <ScrollLink
-                      to={to}
-                      spy
-                      smooth
-                      offset={-100}
-                      duration={500}
-                      className="hover:underline cursor-pointer"
-                      style={{ color: textColor }}
-                    >
-                      {label}
-                    </ScrollLink>
-                  ) : (
-                    <button
-                      onClick={() => handleLinkClick(to)}
-                      className="hover:underline cursor-pointer"
-                      style={{ color: textColor }}
-                    >
-                      {label}
-                    </button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="sm:text-md font-semibold mb-4">Follow Us</h3>
-            <div className="space-y-3">
-              {SOCIAL_LINKS.map(({ label, icon: Icon, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center sm:text-xl text-sm gap-2 hover:underline"
+        </div>
+
+        {/* Navigation Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2">
+            {NAV_ITEMS.map(({ label, to }) => (
+              <li key={to}>
+                <Link
+                  to={to}
+                  className="hover:underline"
                   style={{ color: textColor }}
                 >
-                  <Icon className="h-5 w-5" />
-                  <span className="sm:text-lg text-sm">{label}</span>
-                </a>
-              ))}
-            </div>
-            
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Social Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+          <div className="space-y-3">
+            {SOCIAL_LINKS.map(({ label, icon: Icon, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:underline"
+                style={{ color: textColor }}
+              >
+                <Icon className="h-5 w-5" />
+                <span>{label}</span>
+              </a>
+            ))}
           </div>
-          
         </div>
       </div>
-            {/* Footer */}
-      <footer
-        style={{ backgroundColor: bgColor, color: textColor }}
-        className="w-full py-12 border-t transition-colors duration-300"
-      >
-        <div className="text-center">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} IEDC CET. All rights reserved.
-          </p>
-        </div>
-      </footer>
+
+      {/* Copyright */}
+      <div className="text-center mt-10">
+        <p className="text-sm" style={{ color: textColor }}>
+          &copy; {new Date().getFullYear()} IEDC CET. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }

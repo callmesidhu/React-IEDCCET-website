@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import {db , collection, addDoc } from "../services/configs" // Adjust the import based on your Firebase setup
+import Footer from "../components/landing/Footer"
+import Navbar from "../components/landing/Navbar"
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -265,7 +267,7 @@ const handleSubmit = async (e) => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
         <div className="w-full max-w-md text-center bg-white rounded-lg shadow-lg border border-gray-200">
           <div className="pt-6 pb-6 px-6">
             <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -294,8 +296,9 @@ const handleSubmit = async (e) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg border border-gray-200">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center flex-col">
+      <Navbar/>
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg border border-gray-200 my-4 ">
         {/* Header */}
         <div className="text-center bg-blue-600 text-white rounded-t-lg px-8 py-6">
           <h1 className="text-3xl font-bold mb-2">Registration Form</h1>
@@ -512,6 +515,7 @@ const handleSubmit = async (e) => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

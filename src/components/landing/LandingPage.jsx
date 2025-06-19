@@ -29,7 +29,7 @@ function LandingPage() {
 
   return (
     <section
-      className="w-full min-h-screen"
+      className="w-full min-h-screen overflo"
       style={{ backgroundColor: bgColor, color: textColor1 }}
     >
       <div className="sm:pt-24 pt-14 sm:px-24 px-2 sm:pb-24 pb-14">

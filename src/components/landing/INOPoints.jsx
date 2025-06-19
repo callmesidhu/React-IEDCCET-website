@@ -31,42 +31,47 @@ const INOPoints = () => {
 
       <div className="flex flex-col items-center w-full">
         {/* Video Embed */}
-        <motion.div
-          {...fadeInUp}
-          className="w-full max-w-4xl aspect-video mb-6 md:mb-8"
-        >
-          <iframe
-            className="w-full h-full rounded-xl shadow-lg"
-            src="https://www.youtube.com/embed/CrJgOZmH4vA?si=Hx6bBcKJe6ddJujV"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
-        </motion.div>
+                  <motion.div
+                {...fadeInUp}
+                className="w-full max-w-4xl aspect-video mb-6 md:mb-8"
+              >
+                <video
+                  className="w-full h-full rounded-xl shadow-lg"
+                  src="https://iedc-cet-website.vercel.app/Videos/INO.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </motion.div>
+
 
         {/* Description */}
         <motion.p
           {...fadeInUp}
           className="max-w-3xl md:max-w-5xl lg:max-w-7xl mt-6 text-lg md:text-xl lg:text-2xl text-center leading-relaxed"
         >
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
-          in a piece of classical Latin literature from 45 BC, making it over 2000 years
-          old. Richard McClintock, a Latin professor at Hampden-Sydney College in
-          Virginia, looked up one of the more obscure Latin words.
+          Introducing  𝗜𝗡𝗢 𝗣𝗢𝗜𝗡𝗧𝗦
+
+A revolution in how CET thinks.
+
+Your work and hardships will now be recognized by 𝗜𝗘𝗗𝗖 𝗖𝗘𝗧.
+
+Earn through registrations to events and workshops
+
+Redeem cash prize and vouchers.
+
+So what are you waiting for !!
+
+Start farming your INO POINTS now.
+
+𝗖𝗢𝗠𝗣𝗘𝗧𝗘 𝗖𝗢𝗟𝗟𝗘𝗖𝗧 𝗖𝗢𝗡𝗡𝗘𝗖𝗧 
         </motion.p>
       </div>
 
-      {/* Footer */}
-      <footer
-        style={{ backgroundColor: bgColor, color: textColor }}
-        className="w-full py-12 mt-20 border-t border-gray-300 dark:border-gray-700 transition-colors duration-300 text-center"
-      >
-        <p className="text-base md:text-lg">
-          &copy; {new Date().getFullYear()} INO Points. All rights reserved.
-        </p>
-      </footer>
     </div>
   );
 };

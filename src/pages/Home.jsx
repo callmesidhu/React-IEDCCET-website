@@ -32,7 +32,7 @@ function Home() {
   return (
     <>
       <Navbar />
-
+      <div className="overflow-x-hidden">
       <Element name="landing">
         <LandingPage />
       </Element>
@@ -77,7 +77,8 @@ function Home() {
       </Element>
       <Footer />
       
-    </>
+     </div>
+     </>
   );
 }
 

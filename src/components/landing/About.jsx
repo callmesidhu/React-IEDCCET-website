@@ -141,8 +141,9 @@ const About = () => {
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
               • To motivate the students to think creatively and generate
-                innovative ideas from all fields of engineering.
+                innovative ideas from all fields of engineering.<br></br>
               • To transform innovative ideas into socially and industrially relevent products.
+              <br></br>
               • To incu`lcate a culture of innovation driven entrepreneurship.
             </p>
           </div>
