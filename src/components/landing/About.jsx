@@ -58,11 +58,12 @@ const About = () => {
               className=" text-lg leading-relaxed"
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words,
+              IEDC-CET shall promote and foster entrepreneurial culture in the
+              college and will provide a platform for the students to pursue
+              entrepreneurial activities. It shall provide assistance to
+              potential entrepreneurs of CET, conduct activities that develop
+              entrepreneurial qualities in students and shall provide common
+              facilities to students working on start-ups.
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -96,11 +97,16 @@ const About = () => {
               className="text-black text-lg leading-relaxed"
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words,
+              The Innovation and Entrepreneurship Development Cell (IEDC) is an
+              active student-run cell under CET Centre for Interdisciplinary
+              Research (CCIR) that seeks to create and promote innovation and
+              entrepreneurship skills among the students of CET. The cell works
+              in close association with Kerala Startup Mission, CET –TBI and
+              other student clubs. It envisions fostering innovative thinking
+              and becoming a facilitator between the students inside the campus
+              and the industry outside by acting as a hub of contacts and
+              network that helps in finding the wannabe entrepreneurs the right
+              people to approach for any task
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -134,11 +140,10 @@ const About = () => {
               className="text-black text-lg leading-relaxed"
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words,
+              • To motivate the students to think creatively and generate
+                innovative ideas from all fields of engineering.
+              • To transform innovative ideas into socially and industrially relevent products.
+              • To incu`lcate a culture of innovation driven entrepreneurship.
             </p>
           </div>
           <div className="w-full md:w-[480px]">
