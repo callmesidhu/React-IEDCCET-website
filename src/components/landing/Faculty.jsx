@@ -83,7 +83,7 @@ function FacultyCards() {
   const cardHeight = cardWidth * (IMAGE_HEIGHT / IMAGE_WIDTH);
 
   const FacultyCard = ({ faculty }) => (
-    <div className="flex flex-col items-center h-full">
+    <div className="flex flex-col items-center h-full ">
       {/* Image container */}
       <div
         className="relative overflow-hidden w-full transition-colors duration-300"

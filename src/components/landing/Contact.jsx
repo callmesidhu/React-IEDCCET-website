@@ -177,12 +177,12 @@ const Contact = () => {
         >
           <motion.div {...fadeInUp} className="flex items-center">
             <FiPhone size={20} className="mr-2" />
-            <span className="font-bold">+91 8570950954</span>
+            <span className="font-bold">+91 88485 99467</span>
           </motion.div>
           <motion.div {...fadeInUp} className="flex items-center gap-3">
             <FiMail size={20} />
-            <a href="mailto:sample@gmail.com" className="underline font-bold">
-              sample@gmail.com
+            <a href="mailto:ceoiedc@cet.ac.in" className=" font-bold">
+              ceoiedc@cet.ac.in
             </a>
           </motion.div>
           <motion.div {...fadeInUp} className="flex items-center gap-3">
@@ -208,17 +208,7 @@ const Contact = () => {
         transition={Bounce}
       />
 
-      {/* Footer */}
-      <footer
-        style={{ backgroundColor: bgColor, color: textColor }}
-        className="w-full py-12 border-t transition-colors duration-300"
-      >
-        <div className="text-center">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} IEDC CET. All rights reserved.
-          </p>
-        </div>
-      </footer>
+
     </>
   );
 };
