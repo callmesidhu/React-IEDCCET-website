@@ -161,7 +161,7 @@ function TeamCards() {
 
   return (
     <section 
-      className="w-full font-grotesk py-6 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 relative transition-colors duration-300"
+      className="w-full py-6 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 relative transition-colors duration-300"
       style={{ backgroundColor: bgColor }}
     >
       <div className="mx-auto" style={{ maxWidth: `${maxContainerWidth}px` }}>
@@ -204,7 +204,7 @@ function TeamCards() {
             {/* left arrow */}
             <button
               onClick={() => {
-                const swiper = document.querySelector('.desktop-swiper')?.swiper;
+                const swiper = document.querySelector('.desktop-swiper2')?.swiper;
                 if (swiper) swiper.slidePrev();
               }}
               className="absolute z-10 rounded-full p-2 sm:p-3 hover:bg-opacity-20 transition-colors"
@@ -221,7 +221,7 @@ function TeamCards() {
             </button>
 
             <Swiper
-              className="desktop-swiper"
+              className="desktop-swiper2"
               modules={[Navigation, Autoplay]}
               spaceBetween={gap}
               slidesPerView={cardsToShow}
@@ -239,7 +239,7 @@ function TeamCards() {
             {/* right arrow */}
             <button
               onClick={() => {
-                const swiper = document.querySelector('.desktop-swiper')?.swiper;
+                const swiper = document.querySelector('.desktop-swiper2')?.swiper;
                 if (swiper) swiper.slideNext();
               }}
               className="absolute z-10 rounded-full p-2 sm:p-3 hover:bg-opacity-20 transition-colors"

@@ -92,8 +92,7 @@ const Contact = () => {
 
   return (
     <>
-      <motion.section
-        {...fadeUp}
+      <section
         className={`${
           darkMode ? "bg-[#00092C] text-white" : "bg-blue-700 text-white"
         } p-6 md:p-8 min-w-full mx-auto mt-6 md:mt-10 flex flex-col items-center md:flex-row justify-center gap-6 md:gap-12`}
@@ -192,7 +191,7 @@ const Contact = () => {
             </span>
           </motion.div>
         </motion.div>
-      </motion.section>
+      </section>
 
       <ToastContainer
         position="top-right"

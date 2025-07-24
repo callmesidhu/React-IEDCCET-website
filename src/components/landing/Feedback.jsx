@@ -21,12 +21,11 @@ function Feedback() {
   const secondaryTextColor = darkMode ? "#A1A1AA" : "gray.600";
 
   return (
-    <motion.section
-      {...fadeInUp}
+    <section
       className="w-full font-grotesk py-4 sm:py-6 md:py-8 px-4 sm:px-8 md:px-12 lg:px-16 transition-colors duration-300"
       style={{ backgroundColor: bgColor,paddingBottom: "6rem",marginBottom: "-3rem" }}
     >
-      <div className="mx-auto w-full max-w-[1200px] space-y-6">
+      <motion.div {...fadeInUp} className="mx-auto w-full max-w-[1200px] space-y-6">
 
         <motion.h2
           {...fadeInUp}
@@ -75,8 +74,8 @@ function Feedback() {
           </motion.div>
         </motion.div>
 
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }
 

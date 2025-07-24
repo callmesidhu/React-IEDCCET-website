@@ -34,7 +34,7 @@ export default function Navbar() {
         backgroundColor: darkMode ? "#00092C" : "#FFFFFF",
         color: darkMode ? "#FFFFFF" : "#000000",
       }}
-      className="sticky top-0 z-50 shadow-sm transition-colors duration-300 w-full"
+      className="sticky font-grotesk_b top-0 z-50 shadow-sm transition-colors duration-300 w-full"
     >
       {/* Mobile Navbar */}
       <div className="sm:hidden relative px-2 py-3 flex items-center justify-between">
@@ -59,7 +59,7 @@ export default function Navbar() {
         </div>
 
         {/* Center: Nav Items (Absolutely centered) */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-6 font-medium">
+        <div className="mx-auto text-lg flex gap-x-6 font-medium">
           {NAV_ITEMS.map(({ label, to }) => (
             <Link
               key={to}

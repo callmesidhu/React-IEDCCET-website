@@ -19,7 +19,7 @@ const About = () => {
   return (
     <div
       style={{ backgroundColor: bgColor, color: textColor }}
-      className="min-h-screen px-4 md:p-20 mt-14 space-y-14"
+      className="min-h-screen px-4 md:p-20 space-y-14"
     >
       {/* Title */}
       <motion.h1

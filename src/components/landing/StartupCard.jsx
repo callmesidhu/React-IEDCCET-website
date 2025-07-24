@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function StartupCard({ title, description, image }) {
   return (
-    <div className="bg-white  rounded-xl overflow-hidden w-sm flex flex-col border border-blue-500">
+    <div className="bg-white rounded-xl overflow-hidden w-sm flex flex-col border border-blue-500">
       <div className=" ">
         <img 
           src={image || "/placeholder.svg"} 
