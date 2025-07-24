@@ -7,7 +7,7 @@ const fadeIn = {
   initial: { opacity: 0, x: 0 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true, amount: 0.5 },
-  transition: { duration: 1.2 },
+  transition: { duration: 1 },
 };
 
 const fadeInUp = {
@@ -35,13 +35,13 @@ function LandingPage() {
       <div className="sm:pt-24 pt-14 sm:px-24 px-2 sm:pb-24 pb-14">
         <motion.div {...fadeIn}>
           <div className="flex items-start justify-between">
-            <div className="flex flex-col items-start max-w-[600px]">
-              <h1 className="font-bold text-xl sm:text-6xl leading-[1.2]">
+            <div className="flex flex-col sm:-ml-10 items-start max-w-[600px]">
+              <h1 className="font-bold text-x sm:text-[3.5vw] leading-[1.2]">
                 INNOVATION AND <br />
                 ENTREPRENEURSHIP <br />
                 DEVELOPMENT CENTRE
               </h1>
-              <p className="sm:text-xl text-sm mt-4">
+              <p className="sm:text-xl text-[12px] mt-4">
                 COLLEGE OF ENGINEERING TRIVANDRUM
               </p>
 
@@ -49,8 +49,8 @@ function LandingPage() {
                 className="sm:text-lg text-sm sm:mt-10 mt-6"
                 style={{ color: textColor2 }}
               >
-                Welcome to the IEDC CET, where innovation meets opportunity.
-                Join us in fostering entrepreneurial spirit and transforming
+                Welcome to the IEDC CET, where innovation <br></br> meets opportunity.
+                Join us in fostering entrepreneurial <br></br> spirit and transforming
                 ideas into reality.
               </p>
 

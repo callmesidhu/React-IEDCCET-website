@@ -201,7 +201,7 @@ function FacultyCards() {
             {/* left arrow */}
             <button
               onClick={() => {
-                const swiper = document.querySelector('.desktop-swiper')?.swiper;
+                const swiper = document.querySelector('.desktop-swiper1')?.swiper;
                 if (swiper) swiper.slidePrev();
               }}
               className="absolute z-10 rounded-full p-2 sm:p-3 hover:bg-white/20 transition-colors"
@@ -217,7 +217,7 @@ function FacultyCards() {
             </button>
 
             <Swiper
-              className="desktop-swiper"
+              className="desktop-swiper1"
               modules={[Navigation, Autoplay]}
               spaceBetween={gap}
               slidesPerView={cardsToShow}
@@ -235,7 +235,7 @@ function FacultyCards() {
             {/* right arrow */}
             <button
               onClick={() => {
-                const swiper = document.querySelector('.desktop-swiper')?.swiper;
+                const swiper = document.querySelector('.desktop-swiper1')?.swiper;
                 if (swiper) swiper.slideNext();
               }}
               className="absolute z-10 rounded-full p-2 sm:p-3 hover:bg-white/20 transition-colors"

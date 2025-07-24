@@ -1,3 +1,24 @@
 @import "tailwindcss";
 
-@tailwind utilities;
+@font-face {
+    font-family: 'Grotesk';
+    src: url('/fonts/FamiljenGrotesk-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Groteskb';
+    src: url('/fonts/FamiljenGrotesk-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@theme inline {
+  --font-grotesk: Grotesk, "sans-serif";
+  --font-grotesk_b: Groteskb, "sans-serif";
+}
+
+body {
+  font-family: 'Grotesk', sans-serif;
+}
