@@ -16,6 +16,8 @@ const UpcomingEvents = () => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [formUrl, setFormUrl] = useState("");
+
 
   useEffect(() => {
     const q = query(collection(db, "UpcomingEvents"), orderBy("date", "asc"));
@@ -32,7 +34,7 @@ const UpcomingEvents = () => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    if (!title || !date || !imageUrl) {
+    if (!title || !date || !imageUrl ) {
       alert("All fields are required.");
       return;
     }
@@ -42,10 +44,12 @@ const UpcomingEvents = () => {
         title,
         date,
         imageUrl,
+        formUrl
       });
       setTitle("");
       setDate("");
       setImageUrl("");
+      setFormUrl("");
     } catch (error) {
       alert("Error adding event: " + error.message);
     }
@@ -94,6 +98,15 @@ const UpcomingEvents = () => {
           onChange={(e) => setImageUrl(e.target.value)}
           required
         />
+        <input
+          type="url"
+          placeholder="Google Form URL"
+          className="w-full p-3 bg-white rounded-lg text-black"
+          value={formUrl}
+          onChange={(e) => setFormUrl(e.target.value)}
+          required
+        />
+
         <button
           type="submit"
           className="w-44 bg-blue-700 hover:bg-blue-800 p-3 rounded-lg font-bold"
