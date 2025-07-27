@@ -7,7 +7,6 @@ import closeIcon from "../../assets/close.svg";
 
 const NAV_ITEMS = [
   { label: "HOME", to: "/" },
-  { label: "INNOVATORS", to: "/innovators" },
   { label: "START UPS", to: "/startups" },
   { label: "PORTAL", to: "/portal" },
 ];
@@ -59,7 +58,7 @@ export default function Navbar() {
         </div>
 
         {/* Center: Nav Items (Absolutely centered) */}
-        <div className="mx-auto text-lg flex gap-x-6 font-medium">
+        <div className="absolute left-0 right-0 justify-center text-lg flex gap-x-6 font-medium">
           {NAV_ITEMS.map(({ label, to }) => (
             <Link
               key={to}

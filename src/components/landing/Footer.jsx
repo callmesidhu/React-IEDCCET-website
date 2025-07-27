@@ -5,7 +5,6 @@ import { useDarkMode } from "../../context/DarkModeContext";
 
 const NAV_ITEMS = [
   { label: "HOME", to: "/" },
-  { label: "INNOVATORS", to: "/innovators" },
   { label: "START UPS", to: "/startups" },
   { label: "PORTAL", to: "/portal" },
 ];
@@ -27,10 +26,10 @@ export default function Footer() {
       style={{ backgroundColor: bgColor, color: textColor }}
       className="w-full py-12 border-t transition-colors duration-300"
     >
-      <div className="container mx-auto px-4 md:px-8 flex flex-row justify-between gap-10">
+      <div className="container mx-auto px-6 md:px-8 flex flex-row justify-between gap-10">
         {/* Logo */}
-        <div className="flex flex-col items-start gap-4">
-          <div className="w-24 h-24 relative">
+        <div className="flex flex-col items-start gap-4 ">
+          <div className="sm:w-24 w-14 relative">
             <img src="/iedc_logo.png" alt="IEDC Logo" className="object-cover" />
           </div>
         </div>

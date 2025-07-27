@@ -2,10 +2,16 @@
 
 import { useState, useEffect } from "react"
 import {db , collection, addDoc } from "../services/configs" // Adjust the import based on your Firebase setup
+import { useDarkMode } from "../context/DarkModeContext";
 import Footer from "../components/landing/Footer"
 import Navbar from "../components/landing/Navbar"
 
 export default function RegistrationForm() {
+
+  const {darkMode,setDarkMode} = useDarkMode();
+  const bgColor = darkMode ? "#000414" : "#FFFFFF";
+  const textColor = darkMode ? "#FFFFFF" : "#000000";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -296,9 +302,9 @@ const handleSubmit = async (e) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center flex-col">
+    <div style={{ backgroundColor: bgColor, color: textColor }} className="min-h-screen flex items-center justify-center flex-col">
       <Navbar/>
-      <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg border border-gray-200 my-4 ">
+      <div className="w-5/6 max-w-2xl bg-white rounded-lg shadow-lg border border-gray-200 my-10">
         {/* Header */}
         <div className="text-center bg-blue-600 text-white rounded-t-lg px-8 py-6">
           <h1 className="text-3xl font-bold mb-2">Registration Form</h1>
@@ -306,11 +312,11 @@ const handleSubmit = async (e) => {
         </div>
 
         {/* Form Content */}
-        <div className="p-8">
+        <div className="p-8 rounded-b-lg" style={{backgroundColor: darkMode ? "#000C3B" : "#FFFFFF"}}>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Field */}
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-lg font-medium text-gray-700">
+              <label htmlFor="name" style={{ color: textColor }} className="block text-lg font-medium text-gray-700">
                 Full Name *
               </label>
               <input
@@ -333,7 +339,7 @@ const handleSubmit = async (e) => {
 
             {/* Email Field */}
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-lg font-medium text-gray-700">
+              <label htmlFor="email" style={{ color: textColor }} className="block text-lg font-medium text-gray-700">
                 Email Address *
               </label>
               <input
@@ -356,7 +362,7 @@ const handleSubmit = async (e) => {
 
             {/* Contact Field */}
             <div className="space-y-2">
-              <label htmlFor="contact" className="block text-lg font-medium text-gray-700">
+              <label htmlFor="contact" style={{ color: textColor }} className="block text-lg font-medium text-gray-700">
                 Contact Number *
               </label>
               <input
@@ -381,7 +387,7 @@ const handleSubmit = async (e) => {
 
             {/* Idea Details Field */}
             <div className="space-y-2">
-              <label htmlFor="ideaDetails" className="block text-lg font-medium text-gray-700">
+              <label htmlFor="ideaDetails" style={{ color: textColor }} className="block text-lg font-medium text-gray-700">
                 Idea Details *
                 <span className="text-sm text-gray-500 font-normal ml-2">
                   ({formData.ideaDetails.length}/1000 characters, minimum 50)
@@ -409,7 +415,7 @@ const handleSubmit = async (e) => {
 
             {/* Team Status Field */}
             <div className="space-y-4">
-              <label className="block text-lg font-medium text-gray-700">Do you already have a team? *</label>
+              <label style={{ color: textColor }} className="block text-lg font-medium text-gray-700">Do you already have a team? *</label>
               <div className="flex flex-col space-y-3">
                 <div
                   className={`flex items-center space-x-3 p-3 border-2 rounded-lg hover:border-blue-300 transition-colors cursor-pointer ${
