@@ -5,6 +5,7 @@ import { scroller } from "react-scroll";
 
 import Navbar from "../components/landing/Navbar";
 import LandingPage from "../components/landing/LandingPage";
+import Quotes from "../components/landing/Quotes";
 import About from "../components/landing/About";
 import Announcements from "../components/landing/Announcements";
 import Gallery from "../components/landing/Gallery";
@@ -35,6 +36,10 @@ function Home() {
       <div className="overflow-x-hidden">
       <Element name="landing">
         <LandingPage />
+      </Element>
+
+      <Element name="quotes">
+        <Quotes />
       </Element>
 
       <Element name="about">

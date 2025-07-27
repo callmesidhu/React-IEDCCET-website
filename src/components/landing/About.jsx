@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutimg from "../../assets/About.png";
+import aboutimg from "../../assets/landing.jpg";
 import { useDarkMode } from "../../context/DarkModeContext"; 
 
 const fadeInUp = {
   initial: { opacity: 0, y: 50 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 1  },
+  viewport: { once: true, amount: 0.3  },
   transition: { duration: 1 },
 };
 
@@ -19,7 +19,7 @@ const About = () => {
   return (
     <div
       style={{ backgroundColor: bgColor, color: textColor }}
-      className="min-h-screen px-4 md:p-20 space-y-14"
+      className="min-h-screen px-4 md:p-20 pb-10 space-y-14"
     >
       {/* Title */}
       <motion.h1
@@ -58,12 +58,7 @@ const About = () => {
               className=" text-lg leading-relaxed"
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
-              IEDC-CET shall promote and foster entrepreneurial culture in the
-              college and will provide a platform for the students to pursue
-              entrepreneurial activities. It shall provide assistance to
-              potential entrepreneurs of CET, conduct activities that develop
-              entrepreneurial qualities in students and shall provide common
-              facilities to students working on start-ups.
+              To establish IEDC CET as a center of excellence in technology-driven entrepreneurship, fostering a sustainable ecosystem that empowers students to become innovators, founders, and industry leaders by integrating cutting-edge technologies, industry collaborations, and startup support.
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -91,22 +86,28 @@ const About = () => {
               className="text-3xl md:text-4xl font-bold  mb-4"
               style={{ color: darkMode ? "#4CAFFF" : "#1D4ED8" }}
             >
-              About IEDC
+              Our Mission
             </h2>
             <p
-              className="text-black text-lg leading-relaxed"
+              className="text-black text-lg p-2 leading-relaxed"
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
-              The Innovation and Entrepreneurship Development Cell (IEDC) is an
-              active student-run cell under CET Centre for Interdisciplinary
-              Research (CCIR) that seeks to create and promote innovation and
-              entrepreneurship skills among the students of CET. The cell works
-              in close association with Kerala Startup Mission, CET –TBI and
-              other student clubs. It envisions fostering innovative thinking
-              and becoming a facilitator between the students inside the campus
-              and the industry outside by acting as a hub of contacts and
-              network that helps in finding the wannabe entrepreneurs the right
-              people to approach for any task
+            • To promote an innovation-driven entrepreneurial culture among students by providing structured mentorship, industry exposure, and hands-on experience.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• To foster enterprise among budding technopreneurs and create more employment opportunities by nurturing high-potential student startups.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• To bridge the gap between industry and academia by facilitating strategic collaborations and knowledge-sharing platforms.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• To support budding entrepreneurs through grants and foster an entrepreneurial mindset in the academic community, ensuring long-term sustainability of startup ventures.
             </p>
           </div>
           <div className="w-full md:w-[480px]">
@@ -137,14 +138,35 @@ const About = () => {
               Objectives
             </h2>
             <p
-              className="text-black text-lg leading-relaxed"
+              className="text-black text-lg p-2 leading-relaxed"
               style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
             >
-              • To motivate the students to think creatively and generate
-                innovative ideas from all fields of engineering.<br></br>
-              • To transform innovative ideas into socially and industrially relevent products.
-              <br></br>
-              • To incu`lcate a culture of innovation driven entrepreneurship.
+            • Facilitate experiential learning through workshops and mentorship aligned with the structured process.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• Establish strong partnerships with industry leaders, research organizations, and startup enablers.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• Support the development of market-ready products and startups with incubation support.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• Promote sustainable innovation addressing regional and global challenges.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• Build entrepreneurial and intrapreneurial skills through continuous engagement.
+            </p>
+            <p
+              className="text-black text-lg p-2 leading-relaxed"
+              style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
+            >• Create a structured methodology to build entrepreneurs from CET. The IgnitES 5-phase program, already approved by the College Council and spread across 8 semesters, will be used as the foundational guideline and framework. This program can be adapted as necessary to meet evolving institutional and industry needs.
             </p>
           </div>
           <div className="w-full md:w-[480px]">

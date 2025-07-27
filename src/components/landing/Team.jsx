@@ -136,7 +136,7 @@ function TeamCards() {
               style={{ color: textColor }}
             />
             <span 
-              className="text-xs sm:text-sm truncate max-w-[100px] sm:max-w-[120px] transition-colors duration-300"
+              className="text-xs sm:text-sm truncate max-w-[200px] sm:max-w-[200px] transition-colors duration-300"
               style={{ color: textColor }}
             >
               {faculty.email}
