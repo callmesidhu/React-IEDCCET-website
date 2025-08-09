@@ -68,6 +68,13 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+          <a
+            href="https://leaderboard.iedccet.com/"
+            target="_blank"
+            className="cursor-pointer hover:text-blue-600 transition-colors duration-150"
+          >
+            Leaderboard 
+          </a>
         </div>
 
         {/* Right: Dark Mode Toggle */}
