@@ -7,7 +7,7 @@ import closeIcon from "../../assets/close.svg";
 
 const NAV_ITEMS = [
   { label: "HOME", to: "/" },
- // { label: "START UPS", to: "/startups" },//
+  // { label: "START UPS", to: "/startups" },//
   { label: "PORTAL", to: "/portal" },
 ];
 
@@ -24,8 +24,8 @@ export default function Navbar() {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-  const toggleMenu = () => setIsOpen(prev => !prev);
-  const toggleDark = () => setDarkMode(prev => !prev);
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const toggleDark = () => setDarkMode((prev) => !prev);
 
   return (
     <nav
@@ -57,7 +57,7 @@ export default function Navbar() {
           <img src="/iedc_logo.png" alt="IEDC Logo" className="w-10 h-auto" />
         </div>
 
-        {/* Center: Nav Items (Absolutely centered) */}
+        {/* Center: Nav Items */}
         <div className="absolute left-0 right-0 justify-center text-lg flex gap-x-6 font-medium">
           {NAV_ITEMS.map(({ label, to }) => (
             <Link
@@ -71,9 +71,10 @@ export default function Navbar() {
           <a
             href="https://leaderboard.iedccet.com/"
             target="_blank"
+            rel="noopener noreferrer"
             className="cursor-pointer hover:text-blue-600 transition-colors duration-150"
           >
-            Leaderboard 
+            LEADERBOARD
           </a>
         </div>
 
@@ -101,10 +102,22 @@ export default function Navbar() {
                 >
                   {label}
                 </Link>
-                <hr className="mx-4"></hr>
+                <hr className="mx-4" />
               </li>
             ))}
+
+            {/* Leaderboard Link for Mobile */}
             <li>
+              <a
+                href="https://leaderboard.iedccet.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-2 hover:text-blue-600 transition-colors duration-150"
+                onClick={toggleMenu}
+              >
+                LEADERBOARD
+              </a>
+              <hr className="mx-4" />
             </li>
           </ul>
         </div>
