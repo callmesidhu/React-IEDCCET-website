@@ -139,7 +139,7 @@ return (
 
     <div className="mx-auto" style={{ maxWidth: `${maxContainerWidth}px` }}>
       <h2 className="text-2xl  md:text-5xl font-bold text-white text-center mb-4 sm:mb-6 md:mb-8 lg:mb-12">
-        Upcoming Events
+        Projects
       </h2>
 
       <div
