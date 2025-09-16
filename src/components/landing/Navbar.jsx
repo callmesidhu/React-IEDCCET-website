@@ -8,7 +8,7 @@ import closeIcon from "../../assets/close.svg";
 const NAV_ITEMS = [
   { label: "HOME", to: "/" },
   // { label: "START UPS", to: "/startups" },//
-  { label: "PORTAL", to: "/portal" },
+  { label: "INNOVATORS-PORTAL", to: "/portal" },
 ];
 
 export default function Navbar() {
