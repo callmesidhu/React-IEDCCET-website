@@ -52,7 +52,7 @@ function Feedback() {
               className="text-sm sm:text-base md:text-lg font-medium text-center transition-colors duration-300"
               style={{ color: textColor }}
             >
-              "I found my passion and purpose through this club!"
+              "Helping students innovate has been my drive and IEDC CET helps  to fulfill it!"
             </motion.p>
             <motion.div
               {...fadeInUp}
@@ -62,7 +62,7 @@ function Feedback() {
                 className="text-sm sm:text-base font-medium transition-colors duration-300"
                 style={{ color: textColor }}
               >
-                - Mark Smith
+                - Abhinav A
               </p>
               <p 
                 className="text-xs md:text-sm transition-colors duration-300"
