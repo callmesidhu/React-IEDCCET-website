@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutimg from "../../assets/landing.jpg";
+import vision from "../../assets/vision.jpg";
+import mission from "../../assets/mission.jpg";
+import objectives from "../../assets/objectives.JPG";
 import { useDarkMode } from "../../context/DarkModeContext"; 
 
 const fadeInUp = {
@@ -63,7 +65,7 @@ const About = () => {
           </div>
           <div className="w-full md:w-[480px]">
             <img
-              src={aboutimg}
+              src={vision}
               className="w-full h-[250px] rounded-lg object-cover"
               alt="Our Vision"
             />
@@ -112,7 +114,7 @@ const About = () => {
           </div>
           <div className="w-full md:w-[480px]">
             <img
-              src={aboutimg}
+              src={mission}
               className="w-full h-[250px] rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 object-cover"
               alt="About IEDC"
             />
@@ -171,7 +173,7 @@ const About = () => {
           </div>
           <div className="w-full md:w-[480px]">
             <img
-              src={aboutimg}
+              src={objectives}
               className="w-full h-[250px] rounded-lg object-cover"
               alt="Objectives"
             />
