@@ -169,7 +169,7 @@ return (
                 <div className="flex flex-col items-center">
                   {/* Image container */}
                   <a
-                    href={event.formUrl}
+                    
                     target="_blank"
                     rel="noopener noreferrer"
                   >
