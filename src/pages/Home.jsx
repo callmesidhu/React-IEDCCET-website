@@ -42,6 +42,10 @@ function Home() {
         <Element name="quotes">
           <Quotes />
         </Element>
+        
+        <Element name="team">
+          <Team />
+        </Element>
 
         <Element name="about">
           <About />
@@ -69,10 +73,6 @@ function Home() {
 
         <Element name="faculty">
           <Faculty />
-        </Element>
-
-        <Element name="team">
-          <Team />
         </Element>
 
         <Element name="feedback">
