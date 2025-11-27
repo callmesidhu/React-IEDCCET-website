@@ -10,22 +10,44 @@ import { db } from "../../services/configs";
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.8 },
+  viewport: { amount: 0.1, once: true }, // triggers when only 10% is visible
   transition: { duration: 0.6 },
 };
 
 const Announcements = () => {
 
   const [announcements,setAnnouncements] = useState([]);
+
+  const staticAnnouncement = {
+    id: "static-1",
+    date: "26-11-2025",
+    //title: "CII – Industrial Visit",
+    description:
+      "A visit has been arranged for the faculty members from CET and CETSOM by the Confederation of Indian Industries on 26/11/2025 to discuss internship, entrepreneurial and innovation opportunities at Bio Life Sciences Park, Thonnakkal, Trivandrum.",
+    images: [
+      "https://res-console.cloudinary.com/dxhoy2m9o/thumbnails/v1/image/upload/v1764256334/cGhvdG9fMjAyNS0xMS0yN18yMC0zOC00MF9qNnh2bjk=/drilldown",
+      "https://res-console.cloudinary.com/dxhoy2m9o/thumbnails/v1/image/upload/v1764256282/cGhvdG9fMjAyNS0xMS0yN18yMC0zOC01MV9hb3BzNno=/drilldown",
+    ],
+  };
+
+
   const { darkMode, setDarkMode } = useDarkMode();
   const bgColor = darkMode ? "#000414" : "#FFFFFF";
   
   useEffect(() =>{
      const fetchAnnouncements = async () =>{
       try{
-           const querySnapshot = await getDocs(collection(db,"Announcements"));
-           const announcementsData = querySnapshot.docs.map(doc => ({ id:doc.id,...doc.data()}));
-           setAnnouncements(announcementsData);
+        const querySnapshot = await getDocs(collection(db, "Announcements"));
+        const announcementsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log("Fetched Announcements: ", announcementsData);
+        console.log("Static Announcement: ", staticAnnouncement);
+        // Add hardcoded announcement before firebase announcements
+        setAnnouncements([staticAnnouncement, ...announcementsData]);
+       
+
       }catch(error){
         console.error("Error fetching announcements: ",error);
       }
@@ -41,7 +63,8 @@ const Announcements = () => {
     >
       <div
         className="border-4 rounded-2xl p-6 md:p-12 pr-6  w-[90%] md:max-w-7xl overflow-y-auto"
-        style={{ borderColor: darkMode ? "#2164F6" : "#1D4ED8" ,
+        style={{
+          borderColor: darkMode ? "#2164F6" : "#1D4ED8",
           backgroundColor: darkMode ? "#000C3B" : "#FFFFFF",
         }}
       >
@@ -74,14 +97,14 @@ const Announcements = () => {
             <motion.div
               key={index}
               {...fadeInUp}
-              className="bg-gray-200 border-2 border-gray-700 rounded-md p-6 shadow-sm"
+              className="bg-gray-200  border-2 border-gray-700 rounded-md p-6 shadow-sm"
               style={{
                 borderColor: darkMode ? "#9DAFFF" : "#374151",
                 backgroundColor: darkMode ? "#091B62" : "#E5E7EB", // gray-800 : gray-200
               }}
             >
               <p
-                className="text-xs font-bold text-blue-700 uppercase mb-1"
+                className="text-base font-bold text-blue-700 uppercase mb-1"
                 style={{ color: darkMode ? "#FFFFFF" : "#1D4ED8" }}
               >
                 {announcement.date}
@@ -93,11 +116,25 @@ const Announcements = () => {
                 {announcement.title}
               </h2>
               <p
-                className=" font-semibold mr-4"
+                className="text-base font-semibold mr-4"
                 style={{ color: darkMode ? "#FFFFFF" : "#000000" }}
               >
                 {announcement.description}
               </p>
+
+              {announcement.images && (
+                <div className="my-4 flex gap-4 flex-wrap">
+                  {announcement.images.map((img, i) => (
+                    <img
+                      key={i}
+                      src={img}
+                      alt="Announcement"
+                      className="w-[48%] rounded-md shadow-md border"
+                    />
+                  ))}
+                </div>
+              )}
+
             </motion.div>
           ))}
         </div>
