@@ -20,7 +20,7 @@ const Announcements = () => {
 
   const staticAnnouncement = {
     id: "static-1",
-    date: "26-11-2025",
+    date: "2025-11-26",
     //title: "CII – Industrial Visit",
     description:
       "A visit has been arranged for the faculty members from CET and CETSOM by the Confederation of Indian Industries on 26/11/2025 to discuss internship, entrepreneurial and innovation opportunities at Bio Life Sciences Park, Thonnakkal, Trivandrum.",
