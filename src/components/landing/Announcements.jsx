@@ -129,7 +129,7 @@ const Announcements = () => {
                       key={i}
                       src={img}
                       alt="Announcement"
-                      className="w-[48%] rounded-md shadow-md border"
+                      className="md-w-[48%] rounded-md shadow-md border"
                     />
                   ))}
                 </div>
