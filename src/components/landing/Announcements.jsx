@@ -25,8 +25,8 @@ const Announcements = () => {
     description:
       "A visit has been arranged for the faculty members from CET and CETSOM by the Confederation of Indian Industries on 26/11/2025 to discuss internship, entrepreneurial and innovation opportunities at Bio Life Sciences Park, Thonnakkal, Trivandrum.",
     images: [
-      "https://res-console.cloudinary.com/dxhoy2m9o/thumbnails/v1/image/upload/v1764256334/cGhvdG9fMjAyNS0xMS0yN18yMC0zOC00MF9qNnh2bjk=/drilldown",
-      "https://res-console.cloudinary.com/dxhoy2m9o/thumbnails/v1/image/upload/v1764256282/cGhvdG9fMjAyNS0xMS0yN18yMC0zOC01MV9hb3BzNno=/drilldown",
+      "https://res.cloudinary.com/dxhoy2m9o/image/upload/v1764256334/photo_2025-11-27_20-38-40_j6xvn9.jpg",
+      "https://res.cloudinary.com/dxhoy2m9o/image/upload/v1764256282/photo_2025-11-27_20-38-51_aops6z.jpg",
     ],
   };
 
@@ -123,13 +123,14 @@ const Announcements = () => {
               </p>
 
               {announcement.images && (
-                <div className="my-4 flex gap-4 flex-wrap">
+                <div className="my-4 flex gap-2 md:gap-6 flex-wrap ">
                   {announcement.images.map((img, i) => (
+                    
                     <img
                       key={i}
                       src={img}
                       alt="Announcement"
-                      className="md-w-[48%] rounded-md shadow-md border"
+                      className="md:w-[48%] rounded-md shadow-md border"
                     />
                   ))}
                 </div>
